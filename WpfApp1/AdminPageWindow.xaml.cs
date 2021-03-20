@@ -28,5 +28,10 @@ namespace WpfApp1
 
             listOfUsers.ItemsSource = users;
         }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

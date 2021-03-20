@@ -61,5 +61,10 @@ namespace WpfApp1
                     break;
             }
         }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
