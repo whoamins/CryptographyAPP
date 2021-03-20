@@ -38,7 +38,7 @@ namespace WpfApp1
 
         public override string ToString()
         {
-            return $"{Login}";
+            return $"Login: {Login} | Email: {Email}";
         }
     }
 }

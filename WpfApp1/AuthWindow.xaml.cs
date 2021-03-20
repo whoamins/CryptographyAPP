@@ -39,7 +39,13 @@ namespace WpfApp1
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 }
 
-                if (loginUser != null)
+                if(loginUser.Login == "admin")
+                {
+                    AdminPageWindow adminPageWindow = new AdminPageWindow();
+                    adminPageWindow.Show();
+                    this.Hide();
+                }
+                else if (loginUser != null)
                 {
                     MessageBox.Show("Все ок!");
 
