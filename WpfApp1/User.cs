@@ -15,24 +15,18 @@ namespace WpfApp1
             get { return login; }
             set { login = value; }
         }
-
         public string Password
         {
             get { return password; }
             set { password = value; }
         }
-
         public string Email
         {
             get { return email; }
             set { email = value; }
         }
-
-
-
         public int id { get; set; }
         
-
         public User() { }
 
         public User(string login, string email, string password)
@@ -40,6 +34,11 @@ namespace WpfApp1
             this.login = login;
             this.email = email;
             this.password = password;
+        }
+
+        public override string ToString()
+        {
+            return $"{Login}";
         }
     }
 }

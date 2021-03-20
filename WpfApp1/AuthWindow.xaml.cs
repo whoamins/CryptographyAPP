@@ -19,6 +19,7 @@ namespace WpfApp1
     /// </summary>
     public partial class AuthWindow : Window
     {
+        public string Username2 { get; set; }
         public AuthWindow()
         {
             InitializeComponent();
@@ -42,7 +43,9 @@ namespace WpfApp1
                 {
                     MessageBox.Show("Все ок!");
 
-                    // TODO: Сделать переход с окна авторизации на окно приложения
+                    MainContentWindow mainContentWindow = new MainContentWindow();
+                    mainContentWindow.Show();
+                    this.Hide();
                 }
                 else
                 {

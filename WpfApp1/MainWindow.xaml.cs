@@ -86,6 +86,14 @@ namespace WpfApp1
             db.SaveChanges();
 
             #endregion
+
+            #region Редирект
+
+            AuthWindow authWindow = new AuthWindow();
+            authWindow.Show();
+            this.Hide();
+
+            #endregion
         }
 
         /// <summary>

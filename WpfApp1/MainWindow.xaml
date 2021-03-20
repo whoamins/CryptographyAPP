@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:WpfApp1"
+        WindowStartupLocation="CenterScreen"
+        x:Name="AppWindow"
         mc:Ignorable="d"
         Title="Encrypt / Decrypt" Height="600" Width="800">
     <Grid Background="#efefef">
