@@ -9,6 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
+    
     <StackPanel Background="WhiteSmoke">
         <Grid Height="40">
             <StackPanel HorizontalAlignment="Left" Margin="20 0">

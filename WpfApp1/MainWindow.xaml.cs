@@ -109,5 +109,9 @@ namespace WpfApp1
             this.Hide();
         }
 
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
