@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:WpfApp1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Encrypt / Decrypt" Height="600" Width="800">
     <Grid Background="#efefef">
         <Border MinWidth="400" Margin="15" Background="#fff" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="20">

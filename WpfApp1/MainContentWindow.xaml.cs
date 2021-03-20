@@ -30,16 +30,36 @@ namespace WpfApp1
             // TODO: Сделать логаут.
         }
 
-        private void ButtonOpenMenuClick(object sender, RoutedEventArgs e)
+        private void PageButtonClick(object sender, RoutedEventArgs e)
         {
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-        }
+            int index = int.Parse(((Button)e.Source).Uid);
 
-        private void ButtonCloseMenuClick(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+
+            switch (index)
+            {
+                case 0:
+                    GridMain.Background = Brushes.AliceBlue;
+                    break;
+                case 1:
+                    GridMain.Background = Brushes.Red;
+                    break;
+                case 2:
+                    GridMain.Background = Brushes.DarkRed;
+                    break;
+                case 3:
+                    GridMain.Background = Brushes.Green;
+                    break;
+                case 4:
+                    GridMain.Background = Brushes.Red;
+                    break;
+                case 5:
+                    GridMain.Background = Brushes.Yellow;
+                    break;
+                case 6:
+                    GridMain.Background = Brushes.Purple;
+                    break;
+            }
         }
     }
 }
