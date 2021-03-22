@@ -14,11 +14,6 @@
 
         <StackPanel Background="WhiteSmoke">
             <Grid Height="40">
-                <StackPanel HorizontalAlignment="Left" Margin="20 0">
-                    <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
-                        <ComboBoxItem Content="EB" />
-                    </ComboBox>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                     <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
                     <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />

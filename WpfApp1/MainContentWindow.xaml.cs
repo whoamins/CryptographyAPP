@@ -20,6 +20,8 @@ namespace WpfApp1
     /// </summary>
     public partial class MainContentWindow : Window
     {
+        public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+
         public MainContentWindow()
         {
             InitializeComponent();
@@ -34,12 +36,12 @@ namespace WpfApp1
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(10 + (150 * index), 0, 0, 0);
+            GridCursor.Margin = new Thickness(10 + (270 * index), 0, 0, 0);
 
             switch (index)
             {
                 case 0:
-                    GridMain.Background = Brushes.AliceBlue;
+                    GridMain.Background = Brushes.Gray;
                     break;
                 case 1:
                     GridMain.Background = Brushes.Red;
@@ -50,21 +52,53 @@ namespace WpfApp1
                 case 3:
                     GridMain.Background = Brushes.Green;
                     break;
-                case 4:
-                    GridMain.Background = Brushes.Red;
-                    break;
-                case 5:
-                    GridMain.Background = Brushes.Yellow;
-                    break;
-                case 6:
-                    GridMain.Background = Brushes.Purple;
-                    break;
             }
         }
 
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void ComboBox_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBoxItem selectedItem = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+        }
+
+        private void EncryptButtonClick(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, 5, Alphabet);
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Ой, что-то не так! Проверьте введенные данные!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+            //OutputTextBox.Text = base64.Base64Ecrypt(InputTextBox.Text);
+
+            //OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, "sad");
+
+            OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+        }
+
+        private void DecryptButtonClick(object sender, RoutedEventArgs e)
+        {
+            //try
+            //{
+            //    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, -5, Alphabet);
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("Ой, что-то не так! Проверьте введенные данные!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
+
+            //OutputTextBox.Text = base64.Base64Decode(InputTextBox.Text);
+
+            //OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, "sad");
+
+            OutputTextBox.Text = binary.Decode(InputTextBox.Text);
         }
     }
 }

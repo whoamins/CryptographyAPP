@@ -8,15 +8,12 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        Title="Encrypt / Decrypt"
         ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
-    
+
     <StackPanel Background="WhiteSmoke">
+
         <Grid Height="40">
-            <StackPanel HorizontalAlignment="Left" Margin="20 0">
-                <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
-                    <ComboBoxItem Content="EB" />
-                </ComboBox>
-            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                 <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
                 <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
@@ -27,21 +24,59 @@
                 </Button>
             </StackPanel>
         </Grid>
+
         <Grid Height="100">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                <Button Uid="0" Width="150" Content="1" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="1" Width="150" Content="2" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="2" Width="150" Content="3" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="3" Width="150" Content="4" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="4" Width="150" Content="5" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="5" Width="150" Content="6" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="6" Width="150" Content="7" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
+                <Button Uid="0" Width="270" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
+                <Button Uid="1" Width="270" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
+                <Button Uid="2" Width="270" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
+                <Button Uid="3" Width="270" Content="Аккаунт" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
             </StackPanel>
-            <Grid x:Name="GridCursor" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0" />
+            <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" />
+        </Grid>
+
+        <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0">
+
+            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                </Border.Effect>
+                <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+            </Border>
+
+            <ComboBox VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
+                <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Виженера</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
+                </ComboBoxItem>
+                <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">MD5</TextBlock>
+                </ComboBoxItem>
+            </ComboBox>
+
+            <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
+                <Button Width="250" Content="Зашифровать" Click="EncryptButtonClick" />
+                <Button Width="250" Content="Расшифровать" Margin="0 20 0 0" Click="DecryptButtonClick" />
+            </StackPanel>
+
+
+            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                </Border.Effect>
+                <TextBox x:Name="OutputTextBox" Margin="1" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+            </Border>
             
         </Grid>
-        <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite">
-            
-        </Grid>
+        
     </StackPanel>
+
 </Window>
