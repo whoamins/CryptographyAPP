@@ -44,7 +44,7 @@
                 <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
-            <ComboBox VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
+            <ComboBox x:Name="CipherSelection" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
                 <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
                 </ComboBoxItem>
@@ -58,7 +58,7 @@
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">MD5</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
                 </ComboBoxItem>
             </ComboBox>
 

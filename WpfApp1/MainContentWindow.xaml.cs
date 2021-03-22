@@ -67,22 +67,26 @@ namespace WpfApp1
 
         private void EncryptButtonClick(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, 5, Alphabet);
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Ой, что-то не так! Проверьте введенные данные!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
-
-            //OutputTextBox.Text = base64.Base64Ecrypt(InputTextBox.Text);
-
-            //OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, "sad");
-
-            //OutputTextBox.Text = binary.Encode(InputTextBox.Text);
-
-            OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
+            if(CipherSelection.SelectedIndex == 0)
+            {
+                OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, 5, Alphabet);
+            }
+            if(CipherSelection.SelectedIndex == 1)
+            {
+                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, "sad");
+            }
+            if(CipherSelection.SelectedIndex == 2)
+            {
+                OutputTextBox.Text = base64.Base64Encrypt(InputTextBox.Text);
+            }
+            if(CipherSelection.SelectedIndex == 3)
+            {
+                OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+            }
+            if(CipherSelection.SelectedIndex == 4)
+            {
+                OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
+            }
         }
 
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
