@@ -80,7 +80,9 @@ namespace WpfApp1
 
             //OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, "sad");
 
-            OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+            //OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+
+            OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
         }
 
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
@@ -98,7 +100,9 @@ namespace WpfApp1
 
             //OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, "sad");
 
-            OutputTextBox.Text = binary.Decode(InputTextBox.Text);
+            //OutputTextBox.Text = binary.Decode(InputTextBox.Text);
+
+            OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
         }
     }
 }

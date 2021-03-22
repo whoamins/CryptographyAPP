@@ -100,6 +100,7 @@
     <Compile Include="AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ciphers\atbash.cs" />
     <Compile Include="Ciphers\base64.cs" />
     <Compile Include="Ciphers\binary.cs" />
     <Compile Include="Ciphers\caesarCipher.cs" />
