@@ -88,6 +88,11 @@ namespace WpfApp1
             SaveFileService.SaveFile(OutputTextBox);
         }
 
+        /// <summary>
+        /// Обработчик нажатия кнопки хеширования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HashButton(object sender, RoutedEventArgs e)
         {
             if (HashSelection.SelectedIndex == 0)
@@ -110,6 +115,16 @@ namespace WpfApp1
             {
                 OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
             }
+        }
+
+        /// <summary>
+        /// Загрузка файла драгндропом
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragAndDrop(object sender, DragEventArgs e)
+        {
+            DragNDropService.DragAndDrop(e, InputTextBox);
         }
     }
 }
