@@ -10,6 +10,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
@@ -20,55 +21,83 @@ namespace WpfApp1
     /// </summary>
     public partial class MainContentWindow : Window
     {
+        #region Поля
+
         public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
+        #endregion
         public MainContentWindow()
         {
             InitializeComponent();
+            CipherSelection.SelectedIndex = -1;
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку выхода из аккаунта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LogoutButtonClick(object sender, RoutedEventArgs e)
         {
             // TODO: Сделать логаут.
         }
 
+        /// <summary>
+        /// Переход между страницами
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
             GridCursor.Margin = new Thickness(10 + (270 * index), 0, 0, 0);
 
-            #region Фулл говно код
-
             switch (index)
             {
                 case 0:
-                    GridMain.Visibility = Visibility.Visible;
+                    var mainWindow = new MainContentWindow();
+                    mainWindow.Show();
+                    this.Close();
                     break;
                 case 1:
-                    GridMain.Visibility = Visibility.Hidden;
+                    var hashWindow = new HashWindow();
+                    hashWindow.Show();
+                    this.Close();
                     break;
                 case 2:
+                    GridMain.Visibility = Visibility.Hidden;
                     break;
                 case 3:
                     break;
             }
-
-            #endregion
         }
 
+        /// <summary>
+        /// Обработка нажатия на кастомную кнопку закрытия приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
         }
 
+        /// <summary>
+        /// Обработчик выбранного элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ComboBox_Selected(object sender, SelectionChangedEventArgs e)
         {
-            if(CipherSelection.SelectedIndex == 0)
+            if (CipherKey != null)
             {
-                CipherKey.IsEnabled = true;
+                if (CipherSelection.SelectedIndex == 0)
+                {
+                    CipherKey.IsEnabled = true;
+                }
             }
-            if(CipherSelection.SelectedIndex == 1)
+            if (CipherSelection.SelectedIndex == 1)
             {
                 CipherKey.IsEnabled = true;
             }
@@ -86,17 +115,27 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку "Зашифровать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EncryptButtonClick(object sender, RoutedEventArgs e)
         {
-            #region Говнокод
-
             if (CipherSelection.SelectedIndex == 0)
             {
-                OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, 5, Alphabet);
+                try
+                {
+                    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             if(CipherSelection.SelectedIndex == 1)
-            {
-                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, "sad");
+            { 
+                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text);
             }
             if(CipherSelection.SelectedIndex == 2)
             {
@@ -110,21 +149,30 @@ namespace WpfApp1
             {
                 OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
             }
-
-            #endregion
         }
 
+        /// <summary>
+        /// Обработчик нажатия на кнопку "Расшифровать"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
         {
-            #region Фулл говно код
 
             if (CipherSelection.SelectedIndex == 0)
             {
-                OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, -5, Alphabet);
+                try
+                {
+                    OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
             if (CipherSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, "sad");
+                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text);
             }
             if (CipherSelection.SelectedIndex == 2)
             {
@@ -138,8 +186,6 @@ namespace WpfApp1
             {
                 OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
             }
-
-            #endregion
         }
     }
 }

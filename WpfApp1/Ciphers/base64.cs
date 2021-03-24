@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -18,9 +18,17 @@ namespace WpfApp1
 
         public static string Base64Decrypt(string base64EncodedData)
         {
-            var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
+            try
+            {
+                var base64EncodedBytes = Convert.FromBase64String(base64EncodedData);
 
-            return Encoding.UTF8.GetString(base64EncodedBytes);
+                return Encoding.UTF8.GetString(base64EncodedBytes);
+            }
+            catch
+            {
+                MessageBox.Show("Неизвестные символы, укажите Base64!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return base64EncodedData;
+            }
         }
     }
 }

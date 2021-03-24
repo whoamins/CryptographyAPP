@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -22,19 +23,32 @@ namespace WpfApp1
 
         public static string Decode(string data)
         {
-            List<Byte> byteList = new List<Byte>();
-
-            if (data.Contains(" "))
+            try
             {
-                data = data.Replace(" ", String.Empty);
-            }
+                List<Byte> byteList = new List<Byte>();
 
-            for (int i = 0; i < data.Length; i += 8)
+                if (data.Contains(" "))
+                {
+                    data = data.Replace(" ", String.Empty);
+                }
+
+                for (int i = 0; i < data.Length; i += 8)
+                {
+                    byteList.Add(Convert.ToByte(data.Substring(i, 8), 2)); // FIX: <8 CHAR DECODE CRUSH
+                }
+
+                return Encoding.ASCII.GetString(byteList.ToArray());
+            }
+            catch (ArgumentOutOfRangeException)
             {
-                byteList.Add(Convert.ToByte(data.Substring(i, 8), 2)); // FIX: <8 CHAR DECODE CRUSH
+                MessageBox.Show("Введите больше 8 символов!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return data;
             }
-
-            return Encoding.ASCII.GetString(byteList.ToArray());
+            catch (FormatException)
+            {
+                MessageBox.Show("Неизвестные символы!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                return data;
+            }
         }
     }
 }

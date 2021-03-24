@@ -105,6 +105,9 @@
     <Compile Include="Ciphers\binary.cs" />
     <Compile Include="Ciphers\caesarCipher.cs" />
     <Compile Include="Ciphers\vigenere.cs" />
+    <Compile Include="HashWindow.xaml.cs">
+      <DependentUpon>HashWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainContentWindow.xaml.cs">
       <DependentUpon>MainContentWindow.xaml</DependentUpon>
     </Compile>
@@ -114,6 +117,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AuthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="HashWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

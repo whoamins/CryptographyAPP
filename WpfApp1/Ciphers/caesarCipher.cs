@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace WpfApp1
 {
@@ -34,7 +35,14 @@ namespace WpfApp1
             return result;
         }
 
-        public static string Encrypt(string plainMessage, int key, string alphabet) => Encode(plainMessage, key, alphabet);
-        public static string Decrypt(string encryptedMessage, int key, string alphabet) => Encode(encryptedMessage, key, alphabet);
+        public static string Encrypt(string plainMessage, int key, string alphabet)
+        {
+            return Encode(plainMessage, key, alphabet);
+        }
+
+        public static string Decrypt(string encryptedMessage, int key, string alphabet)
+        {
+            return Encode(encryptedMessage, key, alphabet);
+        }
     }
 }

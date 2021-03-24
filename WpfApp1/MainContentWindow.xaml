@@ -27,57 +27,57 @@
 
         <Grid Height="100">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
-                <Button Uid="0" Width="270" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="1" Width="270" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="2" Width="270" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
-                <Button Uid="3" Width="270" Content="Аккаунт" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="PageButtonClick" />
+                <Button Uid="0" Width="270" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
+                <Button Uid="1" Width="270" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
+                <Button Uid="2" Width="270" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
+                <Button Uid="3" Width="270" Content="Аккаунт" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
             </StackPanel>
             <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" />
         </Grid>
+        <!-- Main -->
+            <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible">
+                <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                    </Border.Effect>
+                    <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                </Border>
 
-        <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0">
+                <ComboBox x:Name="CipherSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
+                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Виженера</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
+                    </ComboBoxItem>
+                </ComboBox>
 
-            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
-                </Border.Effect>
-                <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
-            </Border>
-
-            <ComboBox x:Name="CipherSelection" SelectedIndex="-1"  VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
-                <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Виженера</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
-                </ComboBoxItem>
-            </ComboBox>
-
-            <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
-                <TextBox x:Name="CipherKey" Margin="0 20" materialDesign:HintAssist.Hint="Ключ" Width="250" Foreground="Black" />
-                <Button Width="250" Content="Зашифровать" Click="EncryptButtonClick" />
-                <Button Width="250" Content="Расшифровать" Margin="0 20 0 0" Click="DecryptButtonClick" />
-            </StackPanel>
+                <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
+                    <TextBox x:Name="CipherKey" Margin="0 20" materialDesign:HintAssist.Hint="Ключ" Width="250" Foreground="Black" />
+                    <Button Width="250" Content="Зашифровать" Click="EncryptButtonClick" />
+                    <Button Width="250" Content="Расшифровать" Margin="0 20 0 0" Click="DecryptButtonClick" />
+                </StackPanel>
 
 
-            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
-                </Border.Effect>
-                <TextBox x:Name="OutputTextBox" Margin="1" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
-            </Border>
-            
-        </Grid>
-        
-    </StackPanel>
+                <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                    <Border.Effect>
+                        <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                    </Border.Effect>
+                    <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+                </Border>
+
+            </Grid>
+           
+
+    </StackPanel>   
 
 </Window>
