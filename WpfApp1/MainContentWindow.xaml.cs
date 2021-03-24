@@ -66,7 +66,9 @@ namespace WpfApp1
                     this.Close();
                     break;
                 case 2:
-                    GridMain.Visibility = Visibility.Hidden;
+                    var analysisWindow = new CryptoAnalysisWindow();
+                    analysisWindow.Show();
+                    this.Close();
                     break;
                 case 3:
                     break;

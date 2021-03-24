@@ -9,26 +9,27 @@ namespace WpfApp1
 {
     public class FrequencyAnalysis
     {
-		public static string Analysis(string input, TextBox output)
+        public static string Analysis(string input, string output)
         {
-            char ch;
-            for (ch = 'A'; ch <= 'Z'; ch++)
+            int[] c = new int[(int)char.MaxValue];
+
+            StringBuilder sb = new StringBuilder();
+
+            string s = input;
+
+            foreach (char t in s)
             {
-                int count = 0;
-                for (int i = 0; i < input.Length; i++)
-                {
-                    if (ch == input[i] || input[i] == (ch + 32))
-                    {
-                        count++;
-                    }
-                }
-                if (count > 0)
-                {
-                    output.Text = "Char " + ch + "having Freq of " + count;
-                }
+                c[(int)t]++;
             }
 
-            return input;
+            for(int i = 33; i < (int)char.MaxValue; i++)
+            {
+                sb.AppendLine(string.Format("Letter: {0}  Frequency: {1}", (char)i, c[i]));
+            }
+
+            output = sb.ToString();
+
+            return output;
         }
 	}
 }

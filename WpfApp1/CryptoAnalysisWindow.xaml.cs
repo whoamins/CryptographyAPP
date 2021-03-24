@@ -16,15 +16,15 @@ using WpfApp1.DialogServices;
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для HashWindow.xaml
+    /// Логика взаимодействия для CryptoAnalysisWindow.xaml
     /// </summary>
-    public partial class HashWindow : Window
+    public partial class CryptoAnalysisWindow : Window
     {
-        public HashWindow()
+        public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+
+        public CryptoAnalysisWindow()
         {
             InitializeComponent();
-
-            HashSelection.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -101,15 +101,15 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Обработчик нажатия кнопки хеширования
+        /// Обработчик нажатия кнопки анализа
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HashButton(object sender, RoutedEventArgs e)
+        private void AnalysisButton(object sender, RoutedEventArgs e)
         {
             if (HashSelection.SelectedIndex == 0)
             {
-                OutputTextBox.Text = MD5Hash.GetHash(InputTextBox.Text);
+                OutputTextBox.Text = FrequencyAnalysis.Analysis(InputTextBox.Text, OutputTextBox.Text);
             }
             if (HashSelection.SelectedIndex == 1)
             {

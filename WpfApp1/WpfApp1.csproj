@@ -106,6 +106,9 @@
     <Compile Include="Ciphers\binary.cs" />
     <Compile Include="Ciphers\caesarCipher.cs" />
     <Compile Include="Ciphers\vigenere.cs" />
+    <Compile Include="CryptoAnalysisWindow.xaml.cs">
+      <DependentUpon>CryptoAnalysisWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DialogServices\DragNDropService.cs" />
     <Compile Include="DialogServices\SaveFileService.cs" />
     <Compile Include="DialogServices\UploadFileService.cs" />
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AuthWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CryptoAnalysisWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
