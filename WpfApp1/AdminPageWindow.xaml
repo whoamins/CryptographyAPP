@@ -11,6 +11,7 @@
         ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
 
     <StackPanel Background="WhiteSmoke">
+        
         <Grid Height="40">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                 <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
@@ -22,10 +23,13 @@
                 </Button>
             </StackPanel>
         </Grid>
+        
         <Grid Height="560">
             <TextBlock Text="Список пользователей" FontSize="30" FontWeight="Bold" Margin="0" />
             <ListView x:Name="listOfUsers" Margin="10"/>
         </Grid>
+        
+        
     </StackPanel>
 
 </Window>

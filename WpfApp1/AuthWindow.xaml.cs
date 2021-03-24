@@ -23,6 +23,12 @@ namespace WpfApp1
         public AuthWindow()
         {
             InitializeComponent();
+
+            if (Properties.Settings.Default.username != string.Empty)
+            {
+                textBoxLogin.Text = Properties.Settings.Default.username;
+                passwordBoxLogin.Password = Properties.Settings.Default.password;
+            }
         }
 
         private void LoginButtonClick(object sender, RoutedEventArgs e)
@@ -39,7 +45,7 @@ namespace WpfApp1
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 }
 
-                if(loginUser != null && loginUser.Login == "admin")
+                if (loginUser != null && loginUser.Login == "admin")
                 {
                     AdminPageWindow adminPageWindow = new AdminPageWindow();
                     adminPageWindow.Show();
@@ -58,6 +64,13 @@ namespace WpfApp1
                     MessageBox.Show("Что-то не так!");
                 }
             }
+
+            if(RememberMe.IsChecked == true)
+            {
+                Properties.Settings.Default.username = textBoxLogin.Text;
+                Properties.Settings.Default.password = passwordBoxLogin.Password;
+                Properties.Settings.Default.Save();
+            }
         }
 
         private void RegisterWindowButtonClick(object sender, RoutedEventArgs e)
@@ -71,5 +84,7 @@ namespace WpfApp1
         {
             Application.Current.Shutdown();
         }
+
+
     }
 }

@@ -38,21 +38,23 @@ namespace WpfApp1
 
             GridCursor.Margin = new Thickness(10 + (270 * index), 0, 0, 0);
 
+            #region Фулл говно код
+
             switch (index)
             {
                 case 0:
-                    GridMain.Background = Brushes.Gray;
+                    GridMain.Visibility = Visibility.Visible;
                     break;
                 case 1:
-                    GridMain.Background = Brushes.Red;
+                    GridMain.Visibility = Visibility.Hidden;
                     break;
                 case 2:
-                    GridMain.Background = Brushes.DarkRed;
                     break;
                 case 3:
-                    GridMain.Background = Brushes.Green;
                     break;
             }
+
+            #endregion
         }
 
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
@@ -62,12 +64,33 @@ namespace WpfApp1
 
         private void ComboBox_Selected(object sender, SelectionChangedEventArgs e)
         {
-            ComboBoxItem selectedItem = (ComboBoxItem)(sender as ComboBox).SelectedItem;
+            if(CipherSelection.SelectedIndex == 0)
+            {
+                CipherKey.IsEnabled = true;
+            }
+            if(CipherSelection.SelectedIndex == 1)
+            {
+                CipherKey.IsEnabled = true;
+            }
+            if (CipherSelection.SelectedIndex == 2)
+            {
+                CipherKey.IsEnabled = false;
+            }
+            if (CipherSelection.SelectedIndex == 3)
+            {
+                CipherKey.IsEnabled = false;
+            }
+            if (CipherSelection.SelectedIndex == 4)
+            {
+                CipherKey.IsEnabled = false;
+            }
         }
 
         private void EncryptButtonClick(object sender, RoutedEventArgs e)
         {
-            if(CipherSelection.SelectedIndex == 0)
+            #region Говнокод
+
+            if (CipherSelection.SelectedIndex == 0)
             {
                 OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, 5, Alphabet);
             }
@@ -87,26 +110,36 @@ namespace WpfApp1
             {
                 OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
             }
+
+            #endregion
         }
 
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, -5, Alphabet);
-            //}
-            //catch (Exception)
-            //{
-            //    MessageBox.Show("Ой, что-то не так! Проверьте введенные данные!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-            //}
+            #region Фулл говно код
 
-            //OutputTextBox.Text = base64.Base64Decode(InputTextBox.Text);
+            if (CipherSelection.SelectedIndex == 0)
+            {
+                OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, -5, Alphabet);
+            }
+            if (CipherSelection.SelectedIndex == 1)
+            {
+                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, "sad");
+            }
+            if (CipherSelection.SelectedIndex == 2)
+            {
+                OutputTextBox.Text = base64.Base64Decrypt(InputTextBox.Text);
+            }
+            if (CipherSelection.SelectedIndex == 3)
+            {
+                OutputTextBox.Text = binary.Decode(InputTextBox.Text);
+            }
+            if (CipherSelection.SelectedIndex == 4)
+            {
+                OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
+            }
 
-            //OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, "sad");
-
-            //OutputTextBox.Text = binary.Decode(InputTextBox.Text);
-
-            OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
+            #endregion
         }
     }
 }

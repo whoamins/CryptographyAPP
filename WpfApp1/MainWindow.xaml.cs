@@ -47,7 +47,7 @@ namespace WpfApp1
             {
                 textBoxLogin.ToolTip = "Пароль должен содержать в себе более 3 символов";
                 textBoxLogin.Background = Brushes.Red;
-            } 
+            }
             else if (password.Length < 8)
             {
                 passwordBoxLogin.ToolTip = "Пароль должен содержать в себе более 8 символов";

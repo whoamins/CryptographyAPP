@@ -8,8 +8,45 @@
         WindowStartupLocation="CenterScreen"
         x:Name="AppWindow"
         WindowStyle="None"
+        FontFamily="Century Gothic"
         mc:Ignorable="d"
-        Title="Encrypt / Decrypt" Height="600" Width="800">
+        ResizeMode="NoResize"
+        Title="Encrypt / Decrypt" Height="400" Width="600" AllowsTransparency="True">
+    
+    <Grid>
+        <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
+        <Image Source="crypto.jpg" Margin="310, 0, 0, 0" Stretch="UniformToFill" />
+        <StackPanel Margin="20,10,290,10">
+            <Label Content="Регистрация" FontFamily="Segoe UI Black" FontSize="24" Margin="0, 25" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Foreground="#707070" />
+            <StackPanel Margin="0" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>
+                <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Логин" Width="250" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
+                <PasswordBox x:Name="passwordBoxLogin" materialDesign:HintAssist.Hint="Пароль" Width="250" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
+                <PasswordBox x:Name="RepeatPasswordBoxLogin" materialDesign:HintAssist.Hint="Подтвердите Пароль" Width="250" Margin="5"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Email" VerticalAlignment="Center" Foreground="#707070"/>
+                <TextBox x:Name="textBoxEmail" materialDesign:HintAssist.Hint="Почта" Width="250" Margin="5"/>
+            </StackPanel>
+            <Grid>
+                <CheckBox Content="Запомнить меня" Margin="5,10" Foreground="#707070"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15">
+                    <Hyperlink TextDecorations="None" Click="LoginWindowButtonClick">Уже есть аккаунт?</Hyperlink>
+                </TextBlock>            
+            </Grid>
+            <Button HorizontalAlignment="Center" Content="Войти" FontFamily="Century Gothic" FontSize="18" Width="170" Background="#FF307CD6" BorderBrush="#FF307CD6" Click="RegisterButtonClick"/>
+        </StackPanel>
+    </Grid>
+
+
+    <!--
     <Grid Background="#efefef">
 
         <StackPanel Background="WhiteSmoke">
@@ -52,4 +89,6 @@
             
         </Border>
     </Grid>
+    
+    -->
 </Window>

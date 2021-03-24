@@ -3,50 +3,48 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:WpfApp1"
         WindowStartupLocation="CenterScreen"
+        x:Name="AppWindow"
         WindowStyle="None"
-        Title="Encrypt / Decrypt" Height="600" Width="800">
-    
-    <Grid Background="#efefef">
-        <StackPanel Background="WhiteSmoke">
-            <Grid Height="40">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                    <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                    <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                    <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                    <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                    <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
-                        <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
-                    </Button>
-                </StackPanel>
-            </Grid>
-        </StackPanel>
+        mc:Ignorable="d"
+        ResizeMode="NoResize"
+        FontFamily="Century Gothic"
+        Title="Encrypt / Decrypt" Height="400" Width="600" AllowsTransparency="True">
+
+    <Grid>
         
-        <Border MinWidth="400" Margin="15" Background="#fff" VerticalAlignment="Center" Padding="30" MaxWidth="550" CornerRadius="20">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
+            <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+            <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+            <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+            <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+            <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick" >
+                <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
+            </Button>
+        </StackPanel>
 
-            <Border.Effect>
-                <DropShadowEffect BlurRadius="60" Color="#efefef" ShadowDepth="0" />
-            </Border.Effect>
-
-            <StackPanel>
-
-                <TextBlock Text="Авторизация" FontSize="30" FontWeight="Bold" Margin="0 0 0 20" />
-
-                <Grid Margin="0 0 0 20">
-                    <Button HorizontalAlignment="Left" Content="Регистрация" Click="RegisterWindowButtonClick" />
-                    <Button HorizontalAlignment="Right" Content="Авторизация" />
-                </Grid>
-
-                <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Введите логин" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-                <PasswordBox x:Name="passwordBoxLogin" materialDesign:HintAssist.Hint="Введите пароль" Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-
-                <Button Content="Войти" Margin="0 20" Click="LoginButtonClick" />
-
+        <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
+        <Image Source="crypto.jpg" Margin="310, 0, 0, 0" Stretch="UniformToFill" />
+        <StackPanel Margin="20,50,290,10">
+            <Label Content="Авторизация" FontFamily="Segoe UI Black" FontSize="24" Margin="0, 25" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Foreground="#707070" />
+            <StackPanel Margin="0" Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Account" VerticalAlignment="Center" Foreground="#707070"/>
+                <TextBox x:Name="textBoxLogin" materialDesign:HintAssist.Hint="Логин" Width="250" Margin="5"/>
             </StackPanel>
-
-        </Border>
+            <StackPanel Orientation="Horizontal">
+                <materialDesign:PackIcon Kind="Key" VerticalAlignment="Center" Foreground="#707070"/>
+                <PasswordBox x:Name="passwordBoxLogin" materialDesign:HintAssist.Hint="Пароль" Width="250" Margin="5"/>
+            </StackPanel>
+            <Grid>
+                <CheckBox x:Name="RememberMe" Content="Запомнить меня" Margin="5,10" Foreground="#707070" />
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15">
+                    <Hyperlink TextDecorations="None" Click="RegisterWindowButtonClick">Еще нет аккаунта?</Hyperlink>
+                </TextBlock>
+            </Grid>
+            <Button HorizontalAlignment="Center" Content="Войти"  FontSize="18" Width="170" Margin="7" Background="#FF307CD6" BorderBrush="#FF307CD6" Click="LoginButtonClick"/>
+        </StackPanel>
     </Grid>
 </Window>
