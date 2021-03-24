@@ -22,10 +22,17 @@ namespace WpfApp1
                 c[(int)t]++;
             }
 
-            for(int i = 33; i < (int)char.MaxValue; i++)
+            // 33 -> 126
+            // 472 -> 535
+
+            for (int i = 33; i < 126; i++)
             {
                 sb.AppendLine(string.Format("Letter: {0}  Frequency: {1}", (char)i, c[i]));
             }
+            //for(int i = 472; i < 535; i++)
+            //{
+            //    sb.AppendLine(string.Format("Letter: {0}  Frequency: {1}", (char)i, c[i]));
+            //}
 
             output = sb.ToString();
 
