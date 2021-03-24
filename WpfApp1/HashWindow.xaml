@@ -15,24 +15,22 @@
 
         <Grid Height="40">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }">
+                <Button Content="Открыть файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="UploadFileClick" />
+                <Button Content="Сохранить файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="SaveFileClick" />
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                     <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
 
         <Grid Height="100">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="10 0">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0">
                 <Button Uid="0" Width="270" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
                 <Button Uid="1" Width="270" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}"  Click="PageButtonClick" />
                 <Button Uid="2" Width="270" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
                 <Button Uid="3" Width="270" Content="Аккаунт" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
             </StackPanel>
-            <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left"  Margin="280 0" />
+            <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left"  Margin="270 0" />
         </Grid>
         <!-- Main -->
         <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible">
@@ -48,21 +46,21 @@
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">MD5</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">RSA</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">CRC</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">SHA256</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">SHA512</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">RIPEMD160</TextBlock>
                 </ComboBoxItem>
             </ComboBox>
 
             <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
-                <Button Width="250" Content="Захешировать" />
+                <Button Width="250" Content="Захешировать" Click="HashButton" />
                 <Button Width="250" Content="Расхешировать" Margin="0 20 0 0" />
             </StackPanel>
 

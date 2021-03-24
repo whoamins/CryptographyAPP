@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,7 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using WpfApp1.DialogServices;
 
 namespace WpfApp1
 {
@@ -26,6 +27,7 @@ namespace WpfApp1
         public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
         #endregion
+
         public MainContentWindow()
         {
             InitializeComponent();
@@ -47,11 +49,9 @@ namespace WpfApp1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void PageButtonClick(object sender, RoutedEventArgs e)
+        private void PageButtonClick(object sender, RoutedEventArgs e)  
         {
             int index = int.Parse(((Button)e.Source).Uid);
-
-            GridCursor.Margin = new Thickness(10 + (270 * index), 0, 0, 0);
 
             switch (index)
             {
@@ -186,6 +186,36 @@ namespace WpfApp1
             {
                 OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
             }
+        }
+
+        /// <summary>
+        /// Загрузка текста из файла
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UploadFileClick(object sender, RoutedEventArgs e)
+        {
+            UploadFileService.UploadFile(InputTextBox);
+        }
+
+        /// <summary>
+        /// Загрузка файла драгндропом
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DragAndDrop(object sender, DragEventArgs e)
+        {
+            DragNDropService.DragAndDrop(e, InputTextBox);
+        }
+
+        /// <summary>
+        /// Сохранение файла с расшифрованным текстом
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveFileClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileService.SaveFile(OutputTextBox);
         }
     }
 }

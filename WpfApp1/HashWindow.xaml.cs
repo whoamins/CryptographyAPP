@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.DialogServices;
 
 namespace WpfApp1
 {
@@ -54,6 +55,60 @@ namespace WpfApp1
                     break;
                 case 3:
                     break;
+            }
+        }
+
+        /// <summary>
+        /// Обработка нажатия на кастомную кнопку закрытия приложения
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        /// <summary>
+        /// Загрузка текста из файла
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void UploadFileClick(object sender, RoutedEventArgs e)
+        {
+            UploadFileService.UploadFile(InputTextBox);
+        }
+
+        /// <summary>
+        /// Сохранение файла с расшифрованным текстом
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SaveFileClick(object sender, RoutedEventArgs e)
+        {
+            SaveFileService.SaveFile(OutputTextBox);
+        }
+
+        private void HashButton(object sender, RoutedEventArgs e)
+        {
+            if (HashSelection.SelectedIndex == 0)
+            {
+                OutputTextBox.Text = MD5Hash.GetHash(InputTextBox.Text);
+            }
+            if (HashSelection.SelectedIndex == 1)
+            {
+                OutputTextBox.Text = SHA1Hash.GetHash(InputTextBox.Text);
+            }
+            if (HashSelection.SelectedIndex == 2)
+            {
+                OutputTextBox.Text = SHA256Hash.GetHash(InputTextBox.Text);
+            }
+            if (HashSelection.SelectedIndex == 3)
+            {
+                OutputTextBox.Text = SHA512Hash.GetHash(InputTextBox.Text);
+            }
+            if (HashSelection.SelectedIndex == 4)
+            {
+                OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
             }
         }
     }

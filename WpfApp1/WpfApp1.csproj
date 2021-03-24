@@ -105,6 +105,14 @@
     <Compile Include="Ciphers\binary.cs" />
     <Compile Include="Ciphers\caesarCipher.cs" />
     <Compile Include="Ciphers\vigenere.cs" />
+    <Compile Include="DialogServices\DragNDropService.cs" />
+    <Compile Include="DialogServices\SaveFileService.cs" />
+    <Compile Include="DialogServices\UploadFileService.cs" />
+    <Compile Include="Hashes\MD5Hash.cs" />
+    <Compile Include="Hashes\RIPEMD160Hash.cs" />
+    <Compile Include="Hashes\SHA1Hash.cs" />
+    <Compile Include="Hashes\SHA256Hash.cs" />
+    <Compile Include="Hashes\SHA512Hash.cs" />
     <Compile Include="HashWindow.xaml.cs">
       <DependentUpon>HashWindow.xaml</DependentUpon>
     </Compile>

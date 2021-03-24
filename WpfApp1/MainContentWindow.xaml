@@ -15,10 +15,8 @@
 
         <Grid Height="40">
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
+                <Button Content="Открыть файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="UploadFileClick" />
+                <Button Content="Сохранить файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="SaveFileClick" />
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                     <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
                 </Button>
@@ -35,7 +33,7 @@
             <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" />
         </Grid>
         <!-- Main -->
-            <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible">
+            <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
                 <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
                     <Border.Effect>
                         <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
