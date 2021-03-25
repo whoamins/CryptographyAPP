@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         Title="Encrypt / Decrypt"
-        ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
+        ResizeMode="NoResize" Height="600" Width="1080" Foreground="White" ContentRendered="Window_ContentRendered">
 
     <StackPanel Background="WhiteSmoke">
 
@@ -46,7 +46,7 @@
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализатор Виженера</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">3</TextBlock>
@@ -61,6 +61,7 @@
 
             <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
                 <TextBox x:Name="KeyLength" Margin="0 20" materialDesign:HintAssist.Hint="Длина ключа" Width="250" Foreground="Black" />
+                <ProgressBar Minimum="0" Maximum="100" Value="0" Width="250" Margin="0 20" Name="ProgressBar" />
                 <Button Width="250" Content="Анализ" Click="AnalysisButton" />
             </StackPanel>
 

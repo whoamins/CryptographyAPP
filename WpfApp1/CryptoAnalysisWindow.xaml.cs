@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +23,7 @@ namespace WpfApp1
     public partial class CryptoAnalysisWindow : Window
     {
         public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        private bool TriggerForPg = false;
 
         public CryptoAnalysisWindow()
         {
@@ -114,7 +117,8 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = VigenereBruteForce.Brute(InputTextBox.Text, KeyLength.Text);
+                TriggerForPg = true;
+                OutputTextBox.Text = VigenereBruteForce.Brute(InputTextBox.Text, KeyLength.Text, ProgressBar);
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
@@ -129,5 +133,29 @@ namespace WpfApp1
                 OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
             }
         }
+
+        //private void Window_ContentRendered(object sender, EventArgs e)
+        //{
+        //    BackgroundWorker worker = new BackgroundWorker();
+
+        //    if (TriggerForPg)
+        //    {
+        //        worker.WorkerReportsProgress = true;
+        //        worker.DoWork += worker_DoWork;
+        //        worker.ProgressChanged += worker_ProgressChanged;
+        //    }
+
+        //    worker.RunWorkerAsync();
+        //}
+
+        //private void worker_DoWork(object sender, DoWorkEventArgs e)
+        //{
+        //    bVigenereBruteForce.Brute(sender, InputTextBox.Text, KeyLength.Text, ProgressBar);
+        //}
+
+        //private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        //{
+        //    ProgressBar.Value++;
+        //}
     }
 }
