@@ -25,14 +25,18 @@ namespace WpfApp1
             // 33 -> 126
             // 472 -> 535
 
-            for (int i = 33; i < 126; i++)
+            for (int i = 33; i <= 126; i++)
             {
-                sb.AppendLine(string.Format("Letter: {0}  Frequency: {1}", (char)i, c[i]));
+                sb.AppendLine(string.Format("Символ: {0}  Частота: {1}", (char)i, c[i]));
+
+                if(i == 126)
+                {
+                    for(int j = 1040; j <= 1103; j++)
+                    {
+                        sb.AppendLine(string.Format("Символ: {0}  Частота: {1}", (char)j, c[j]));
+                    }
+                }
             }
-            //for(int i = 472; i < 535; i++)
-            //{
-            //    sb.AppendLine(string.Format("Letter: {0}  Frequency: {1}", (char)i, c[i]));
-            //}
 
             output = sb.ToString();
 

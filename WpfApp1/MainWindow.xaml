@@ -36,7 +36,6 @@
                 <TextBox x:Name="textBoxEmail" materialDesign:HintAssist.Hint="Почта" Width="250" Margin="5"/>
             </StackPanel>
             <Grid>
-                <CheckBox Content="Запомнить меня" Margin="5,10" Foreground="#707070"/>
                 <TextBlock VerticalAlignment="Center" HorizontalAlignment="Right" Margin="15">
                     <Hyperlink TextDecorations="None" Click="LoginWindowButtonClick">Уже есть аккаунт?</Hyperlink>
                 </TextBlock>            

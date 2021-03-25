@@ -68,7 +68,7 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
                 </Border.Effect>
-                <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+                <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black" VerticalContentAlignment="Stretch"></TextBox>
             </Border>
 
         </Grid>
