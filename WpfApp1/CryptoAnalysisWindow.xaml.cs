@@ -114,7 +114,7 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = SHA1Hash.GetHash(InputTextBox.Text);
+                OutputTextBox.Text = VigenereBruteForce.Brute(InputTextBox.Text, KeyLength.Text);
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {

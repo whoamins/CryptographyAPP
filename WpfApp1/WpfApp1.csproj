@@ -97,6 +97,7 @@
       <DependentUpon>AdminPageWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Analysis\FrequencyAnalysis.cs" />
+    <Compile Include="Analysis\VigenereBruteForce.cs" />
     <Compile Include="ApplicationContext.cs" />
     <Compile Include="AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
