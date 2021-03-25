@@ -22,9 +22,6 @@ namespace WpfApp1
                 c[(int)t]++;
             }
 
-            // 33 -> 126
-            // 472 -> 535
-
             for (int i = 33; i <= 126; i++)
             {
                 sb.AppendLine(string.Format("Символ: {0}  Частота: {1}", (char)i, c[i]));

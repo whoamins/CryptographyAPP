@@ -25,6 +25,7 @@ namespace WpfApp1
         public CryptoAnalysisWindow()
         {
             InitializeComponent();
+            AnalysisSelection.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -107,23 +108,23 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void AnalysisButton(object sender, RoutedEventArgs e)
         {
-            if (HashSelection.SelectedIndex == 0)
+            if (AnalysisSelection.SelectedIndex == 0)
             {
                 OutputTextBox.Text = FrequencyAnalysis.Analysis(InputTextBox.Text, OutputTextBox.Text);
             }
-            if (HashSelection.SelectedIndex == 1)
+            if (AnalysisSelection.SelectedIndex == 1)
             {
                 OutputTextBox.Text = SHA1Hash.GetHash(InputTextBox.Text);
             }
-            if (HashSelection.SelectedIndex == 2)
+            if (AnalysisSelection.SelectedIndex == 2)
             {
                 OutputTextBox.Text = SHA256Hash.GetHash(InputTextBox.Text);
             }
-            if (HashSelection.SelectedIndex == 3)
+            if (AnalysisSelection.SelectedIndex == 3)
             {
                 OutputTextBox.Text = SHA512Hash.GetHash(InputTextBox.Text);
             }
-            if (HashSelection.SelectedIndex == 4)
+            if (AnalysisSelection.SelectedIndex == 4)
             {
                 OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
             }

@@ -41,9 +41,9 @@
                 <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
-            <ComboBox x:Name="HashSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic">
+            <ComboBox x:Name="AnalysisSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic">
                 <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">1</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">2</TextBlock>
@@ -60,9 +60,8 @@
             </ComboBox>
 
             <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
-                <Button Width="250" Content="Захешировать" Click="AnalysisButton" />
+                <Button Width="250" Content="Анализ" Click="AnalysisButton" />
             </StackPanel>
-
 
             <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
                 <Border.Effect>
