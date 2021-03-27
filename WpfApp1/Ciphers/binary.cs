@@ -9,6 +9,11 @@ namespace WpfApp1
 {
     public class binary
     {
+        /// <summary>
+        /// Зашифровывает в бинарный код
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
         public static string Encode(string plainText)
         {
             string result = "";
@@ -21,6 +26,11 @@ namespace WpfApp1
             return result;
         }
 
+        /// <summary>
+        /// Расшифровывает из бинарного кода
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
         public static string Decode(string data)
         {
             try
@@ -34,7 +44,7 @@ namespace WpfApp1
 
                 for (int i = 0; i < data.Length; i += 8)
                 {
-                    byteList.Add(Convert.ToByte(data.Substring(i, 8), 2)); // FIX: <8 CHAR DECODE CRUSH
+                    byteList.Add(Convert.ToByte(data.Substring(i, 8), 2));
                 }
 
                 return Encoding.ASCII.GetString(byteList.ToArray());

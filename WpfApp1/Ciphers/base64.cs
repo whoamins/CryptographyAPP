@@ -9,13 +9,23 @@ namespace WpfApp1
 {
     public class base64
     {
+        /// <summary>
+        /// Зашифровывает в base64
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
         public static string Base64Encrypt(string plainText)
         {
             var plainTextBytes = Encoding.UTF8.GetBytes(plainText);
 
             return Convert.ToBase64String(plainTextBytes);
         }
-
+        
+        /// <summary>
+        /// Расшифровывает из base64
+        /// </summary>
+        /// <param name="base64EncodedData"></param>
+        /// <returns></returns>
         public static string Base64Decrypt(string base64EncodedData)
         {
             try

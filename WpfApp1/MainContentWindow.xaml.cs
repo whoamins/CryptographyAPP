@@ -24,7 +24,7 @@ namespace WpfApp1
     {
         #region Поля
 
-        public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        public string Alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         #endregion
 
