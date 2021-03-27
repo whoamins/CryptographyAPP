@@ -13,15 +13,15 @@ namespace WpfApp1.DialogServices
     {
         public static void SaveFile(TextBox OutputTextBox)
         {
-            SaveFileDialog fileSave = new SaveFileDialog();
+            SaveFileDialog fileSave = new SaveFileDialog(); // Создаем экземпляр
 
-            fileSave.Filter = "Text file(*.txt)|*.txt|C# File (*.cs)|*cs";
-            fileSave.InitialDirectory = @"c:\";
-            fileSave.ShowDialog();
+            fileSave.Filter = "Text file(*.txt)|*.txt|C# File (*.cs)|*cs"; // Расширения файла, в которых можно сохранить
+            fileSave.InitialDirectory = @"c:\"; // Начальная директория в окне сохранения
+            fileSave.ShowDialog(); // Показать диалоговое окно
 
-            if(fileSave.FileName != "")
+            if(fileSave.FileName != "") // Если файл загружен
             {
-                File.WriteAllText(fileSave.FileName, OutputTextBox.Text);
+                File.WriteAllText(fileSave.FileName, OutputTextBox.Text); // Сохранить текст из текстового поля OutputTextBox в файл 
             }
         }
     }
