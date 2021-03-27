@@ -7,31 +7,29 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
+        WindowStyle="None"
+        ResizeMode="NoResize" Height="600" Width="1080" Foreground="White" MouseDown="WindowMouseDown">
+
+    <StackPanel>
+        <Grid Height="45">
+ 
+        <Button Margin="20 0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
+            <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
+        </Button>
+    </Grid>
 
     <StackPanel Background="WhiteSmoke">
-        
-        <Grid x:Name="GridAdmin" Height="40">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <Button Content="1" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" >
-                    <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
-                </Button>
-            </StackPanel>
-        </Grid>
-
         <Grid Height="560">
             <TextBlock Text="Список пользователей" FontSize="30" FontWeight="Bold" Margin="0" />
             <StackPanel>
                 <ListView x:Name="listOfUsers" Margin="10" Width="1000"/>
-                <Button HorizontalAlignment="Right" Width="80"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Вернуться на главную страницу" HorizontalAlignment="Right" Width="270" Click="MainContentWindowButtonClick" />
+                    <Button Content="Удалить выбранного пользователя" HorizontalAlignment="Right" Width="270" />
+                </StackPanel>
             </StackPanel>
         </Grid>
-        
-        
     </StackPanel>
+  </StackPanel>
 
 </Window>

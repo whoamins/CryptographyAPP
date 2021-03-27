@@ -220,5 +220,18 @@ namespace WpfApp1
         {
             SaveFileService.SaveFile(OutputTextBox);
         }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if(e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

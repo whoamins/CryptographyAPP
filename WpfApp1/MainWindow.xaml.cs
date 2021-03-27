@@ -113,5 +113,13 @@ namespace WpfApp1
             authWindow.Show();
             this.Hide();
         }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
     }
 }

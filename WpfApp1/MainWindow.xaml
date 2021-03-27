@@ -10,9 +10,14 @@
         WindowStyle="None"
         FontFamily="Century Gothic"
         mc:Ignorable="d"
+        AllowsTransparency="True"
         ResizeMode="NoResize"
-        Title="Encrypt / Decrypt" Height="400" Width="600" AllowsTransparency="True">
-    
+        Title="Encrypt / Decrypt" Height="400" Width="600" MouseDown="WindowMouseDown">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="45" />
+    </WindowChrome.WindowChrome>
+
     <Grid>
         <Rectangle RadiusY="8" RadiusX="8" Fill="White"/>
         <Image Source="crypto.jpg" Margin="310, 0, 0, 0" Stretch="UniformToFill" />

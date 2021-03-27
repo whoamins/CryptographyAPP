@@ -95,5 +95,13 @@ namespace WpfApp1
             this.Hide();
         }
 
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
     }
 }

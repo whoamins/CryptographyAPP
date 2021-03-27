@@ -132,5 +132,18 @@ namespace WpfApp1
                 OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
             }
         }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

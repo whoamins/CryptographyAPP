@@ -32,5 +32,30 @@ namespace WpfApp1
             // Выводим их на страницу
             listOfUsers.ItemsSource = users;
         }
+
+        /// <summary>
+        /// Редирект на главную страницу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainContentWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            MainContentWindow mainContentWindow = new MainContentWindow();
+            mainContentWindow.Show();
+            this.Hide();
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }

@@ -61,17 +61,17 @@ namespace WpfApp1
                 case 0:
                     var mainWindow = new MainContentWindow();
                     mainWindow.Show();
-                    this.Close();
+                    this.Hide();
                     break;
                 case 1:
                     var hashWindow = new HashWindow();
                     hashWindow.Show();
-                    this.Close();
+                    this.Hide();
                     break;
                 case 2:
                     var analysisWindow = new CryptoAnalysisWindow();
                     analysisWindow.Show();
-                    this.Close();
+                    this.Hide();
                     break;
                 case 3:
                     break;
@@ -137,6 +137,19 @@ namespace WpfApp1
             {
 
             }
+        }
+
+        private void WindowMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove();
+            }
+        }
+
+        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
         }
     }
 }
