@@ -55,6 +55,8 @@ namespace WpfApp1
         {
             int index = int.Parse(((Button)e.Source).Uid);
 
+
+            // Переход между кнопками
             switch (index)
             {
                 case 0:
@@ -78,22 +80,15 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Обработка нажатия на кастомную кнопку закрытия приложения
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        /// <summary>
-        /// Обработчик выбранного элемента
+        /// Обработчик выбранного элемента в ComboBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ComboBox_Selected(object sender, SelectionChangedEventArgs e)
         {
+            // Проверка выбранного элемента в реальном времени, что бы блокировать
+            // ввод ключа, в зависимости от выбранного шифры 
+
             if (CipherKey != null)
             {
                 if (CipherSelection.SelectedIndex == 0)
@@ -203,7 +198,7 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Загрузка файла драгндропом
+        /// Загрузка файла при помощи функции Drag&Drop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

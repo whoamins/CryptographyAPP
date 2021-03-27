@@ -41,7 +41,6 @@ namespace WpfApp1
             string repeatPassword = RepeatPasswordBoxLogin.Password.Trim();
             string email = textBoxEmail.Text.Trim().ToLower();
 
-            #region Просто полнейший говнокод (но рабочий), лучше не открывать
             // Проверка введеных значений
             if (login.Length < 3)
             {
@@ -77,17 +76,22 @@ namespace WpfApp1
                 MessageBox.Show("Все ок!");
             }
 
-            #endregion
-
             #region Регистрация 
 
-            User user = new User(login, email, password);
+            // Создание нового пользователя с login, email, password полученным из textbox
+            User user = new User(login, email, password); 
+            
+            // Добавляем нового пользователя в базу данных
             db.Users.Add(user);
+
+            // Сохраняем базу данных
             db.SaveChanges();
 
             #endregion
 
             #region Редирект
+
+            // Перенаправление на форму входа
 
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
@@ -107,11 +111,6 @@ namespace WpfApp1
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
             this.Hide();
-        }
-
-        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

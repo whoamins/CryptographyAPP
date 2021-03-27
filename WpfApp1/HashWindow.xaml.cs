@@ -46,10 +46,10 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)
         {
+            // Получаем индекс окна
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(80 + (270 * index), 0, 0, 0);
-
+            // Переход между окнами
             switch (index)
             {
                 case 0:
