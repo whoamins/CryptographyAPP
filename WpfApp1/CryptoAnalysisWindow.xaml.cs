@@ -22,8 +22,11 @@ namespace WpfApp1
     /// </summary>
     public partial class CryptoAnalysisWindow : Window
     {
+        #region Поля
+
         public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
 
+        #endregion
         public CryptoAnalysisWindow()
         {
             InitializeComponent();
@@ -49,10 +52,10 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)
         {
+            // Получаем индекс окна
             int index = int.Parse(((Button)e.Source).Uid);
 
-            GridCursor.Margin = new Thickness(80 + (270 * index), 0, 0, 0);
-
+            // Переход между окнами
             switch (index)
             {
                 case 0:
@@ -73,16 +76,6 @@ namespace WpfApp1
                 case 3:
                     break;
             }
-        }
-
-        /// <summary>
-        /// Обработка нажатия на кастомную кнопку закрытия приложения
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
 
         /// <summary>
@@ -122,6 +115,8 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void AnalysisButton(object sender, RoutedEventArgs e)
         {
+            // В зависимости от выбранного анализа выдаем разный результат
+
             if (AnalysisSelection.SelectedIndex == 0)
             {
                 OutputTextBox.Text = FrequencyAnalysis.Analysis(InputTextBox.Text, OutputTextBox.Text);
@@ -132,40 +127,16 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
-                OutputTextBox.Text = "123";
+
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
-                OutputTextBox.Text = SHA512Hash.GetHash(InputTextBox.Text);
+
             }
             if (AnalysisSelection.SelectedIndex == 4)
             {
-                OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
+
             }
         }
-
-        //private void Window_ContentRendered(object sender, EventArgs e)
-        //{
-        //    BackgroundWorker worker = new BackgroundWorker();
-
-        //    if (TriggerForPg)
-        //    {
-        //        worker.WorkerReportsProgress = true;
-        //        worker.DoWork += worker_DoWork;
-        //        worker.ProgressChanged += worker_ProgressChanged;
-        //    }
-
-        //    worker.RunWorkerAsync();
-        //}
-
-        //private void worker_DoWork(object sender, DoWorkEventArgs e)
-        //{
-        //    bVigenereBruteForce.Brute(sender, InputTextBox.Text, KeyLength.Text, ProgressBar);
-        //}
-
-        //private void worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        //{
-        //    ProgressBar.Value++;
-        //}
     }
 }
