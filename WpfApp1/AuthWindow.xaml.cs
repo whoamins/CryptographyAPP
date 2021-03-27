@@ -19,6 +19,7 @@ namespace WpfApp1
     /// </summary>
     public partial class AuthWindow : Window
     {
+        public static string UserLogin;
         public AuthWindow()
         {
             InitializeComponent();
@@ -54,6 +55,8 @@ namespace WpfApp1
                     // Ищем пользователя с веденным логином и паролем в базе данных
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 }
+
+                UserLogin = loginUser.Login;
 
                 // Если залогинлся админ -> подгрузить пользователю админ панель
                 if (loginUser != null && loginUser.Login == "admin")

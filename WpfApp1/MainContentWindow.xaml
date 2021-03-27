@@ -74,14 +74,13 @@
                 </StackPanel>
 
 
-                <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
-                    </Border.Effect>
-                    <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
-                </Border>
-
-            </Grid>
+            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                </Border.Effect>
+                <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+            </Border>
+        </Grid>
            
 
     </StackPanel>   

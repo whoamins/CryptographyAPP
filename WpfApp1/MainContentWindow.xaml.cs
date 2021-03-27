@@ -136,7 +136,7 @@ namespace WpfApp1
                 }
             }
             if(CipherSelection.SelectedIndex == 1)
-            { 
+            {
                 OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text);
             }
             if(CipherSelection.SelectedIndex == 2)
