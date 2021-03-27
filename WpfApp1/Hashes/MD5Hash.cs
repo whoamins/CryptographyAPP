@@ -11,15 +11,24 @@ namespace WpfApp1
     {
         public static string GetHash(string input)
         {
-            byte[] hash = Encoding.ASCII.GetBytes(input);
+            // Создаем экземпляр
             MD5 md5 = new MD5CryptoServiceProvider();
-            byte[] hashenc = md5.ComputeHash(hash);
-            string result = "";
+            
+            // Получаем байты
+            byte[] bytes = Encoding.ASCII.GetBytes(input);
+            
+            // Вычисляем хеш
+            byte[] hashenc = md5.ComputeHash(bytes);
+
+
+            StringBuilder sb = new StringBuilder();
+
             foreach (var b in hashenc)
             {
-                result += b.ToString("x2");
+                sb.Append(b.ToString("x2"));
             }
-            return result;
+            
+            return sb.ToString();
         }
     }
 }

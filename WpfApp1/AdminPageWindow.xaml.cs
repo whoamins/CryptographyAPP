@@ -23,15 +23,14 @@ namespace WpfApp1
         {
             InitializeComponent();
 
+            // Экземпляр базы данных
             ApplicationContext db = new ApplicationContext();
+            
+            // Получаем всех пользователей в списке.
             List<User> users = db.Users.ToList();
 
+            // Выводим их на страницу
             listOfUsers.ItemsSource = users;
-        }
-
-        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
         }
     }
 }

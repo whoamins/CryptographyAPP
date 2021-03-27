@@ -20,6 +20,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        // Объявление базы данных
         ApplicationContext db;
 
         public MainWindow()

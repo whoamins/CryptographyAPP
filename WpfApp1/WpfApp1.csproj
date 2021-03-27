@@ -96,6 +96,7 @@
     <Compile Include="AdminPageWindow.xaml.cs">
       <DependentUpon>AdminPageWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Analysis\CaesarCipher.cs" />
     <Compile Include="Analysis\FrequencyAnalysis.cs" />
     <Compile Include="Analysis\VigenereBruteForce.cs" />
     <Compile Include="ApplicationContext.cs" />

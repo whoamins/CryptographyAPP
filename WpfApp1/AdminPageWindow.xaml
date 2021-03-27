@@ -7,7 +7,6 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        WindowStyle="None"
         ResizeMode="NoResize" Height="600" Width="1080" Foreground="White">
 
     <StackPanel Background="WhiteSmoke">
@@ -18,15 +17,18 @@
                 <Button Content="2" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
                 <Button Content="3" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
                 <Button Content="4" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" />
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick" >
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" >
                     <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
-        
+
         <Grid Height="560">
             <TextBlock Text="Список пользователей" FontSize="30" FontWeight="Bold" Margin="0" />
-            <ListView x:Name="listOfUsers" Margin="10"/>
+            <StackPanel>
+                <ListView x:Name="listOfUsers" Margin="10" Width="1000"/>
+                <Button HorizontalAlignment="Right" Width="80"/>
+            </StackPanel>
         </Grid>
         
         

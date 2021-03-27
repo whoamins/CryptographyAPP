@@ -73,16 +73,6 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Обработка нажатия на кастомную кнопку закрытия приложения
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        /// <summary>
         /// Загрузка текста из файла
         /// </summary>
         /// <param name="sender"></param>
@@ -119,6 +109,8 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void HashButton(object sender, RoutedEventArgs e)
         {
+            // В зависимости от выбранного хэш-алгоритма выдаем разный результат
+
             if (HashSelection.SelectedIndex == 0)
             {
                 OutputTextBox.Text = MD5Hash.GetHash(InputTextBox.Text);

@@ -53,10 +53,11 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)  
         {
+            // Получаем индекс окна
             int index = int.Parse(((Button)e.Source).Uid);
 
 
-            // Переход между кнопками
+            // Переход между окнами
             switch (index)
             {
                 case 0:
@@ -121,6 +122,8 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void EncryptButtonClick(object sender, RoutedEventArgs e)
         {
+            // В зависимости от выбранного шифра выдаем разный результат
+
             if (CipherSelection.SelectedIndex == 0)
             {
                 try
@@ -157,6 +160,7 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
         {
+            // В зависимости от выбранного шифра выдаем разный результат
 
             if (CipherSelection.SelectedIndex == 0)
             {
