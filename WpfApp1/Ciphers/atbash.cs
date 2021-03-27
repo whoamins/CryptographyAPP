@@ -49,13 +49,13 @@ namespace WpfApp1
         //шифрование текста
         public static string Encrypt(string plainText)
         {
-            return EncryptDecrypt(plainText, ruAlphabet, Reverse(ruAlphabet));
+            return EncryptDecrypt(plainText, alphabet, Reverse(alphabet));
         }
 
         //расшифровка текста
         public static string Decrypt(string encryptedText)
         {
-            return EncryptDecrypt(encryptedText, Reverse(ruAlphabet), ruAlphabet);
+            return EncryptDecrypt(encryptedText, Reverse(alphabet), alphabet);
         }
     }
 }

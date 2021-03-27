@@ -23,12 +23,23 @@ namespace WpfApp1
     public partial class CryptoAnalysisWindow : Window
     {
         public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-        private bool TriggerForPg = false;
 
         public CryptoAnalysisWindow()
         {
             InitializeComponent();
             AnalysisSelection.SelectedIndex = -1;
+        }
+
+        /// <summary>
+        /// Обработка нажатия на кнопку выхода из аккаунта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogoutButtonClick(object sender, RoutedEventArgs e)
+        {
+            AuthWindow auth = new AuthWindow();
+            auth.Show();
+            this.Close();
         }
 
         /// <summary>
@@ -117,12 +128,11 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                TriggerForPg = true;
-                OutputTextBox.Text = VigenereBruteForce.Brute(InputTextBox.Text, KeyLength.Text, ProgressBar);
+                OutputTextBox.Text = VigenereBruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
-                OutputTextBox.Text = SHA256Hash.GetHash(InputTextBox.Text);
+                OutputTextBox.Text = "123";
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {

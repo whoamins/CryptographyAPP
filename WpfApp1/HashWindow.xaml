@@ -17,20 +17,23 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
                 <Button Content="Открыть файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="UploadFileClick" />
                 <Button Content="Сохранить файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center" Click="SaveFileClick" />
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="LogoutButtonClick">
+                    <materialDesign:PackIcon Kind="Logout" Foreground="#FFA2A2A2" Width="25" Height="25"/>
+                </Button>
                 <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                     <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
                 </Button>
             </StackPanel>
         </Grid>
 
-        <Grid Height="100">
+        <Grid Height="70">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0">
                 <Button Uid="0" Width="270" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
                 <Button Uid="1" Width="270" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}"  Click="PageButtonClick" />
                 <Button Uid="2" Width="270" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
                 <Button Uid="3" Width="270" Content="Аккаунт" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
             </StackPanel>
-            <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" HorizontalAlignment="Left"  Margin="270 0" />
+            <Grid x:Name="GridCursor" Width="270" Height="5" Background="#FF2196F3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="270 0 0 0" />
         </Grid>
         <!-- Main -->
         <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">

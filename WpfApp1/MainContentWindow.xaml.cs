@@ -41,7 +41,9 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void LogoutButtonClick(object sender, RoutedEventArgs e)
         {
-            // TODO: Сделать логаут.
+            AuthWindow auth = new AuthWindow();
+            auth.Show();
+            this.Close();
         }
 
         /// <summary>

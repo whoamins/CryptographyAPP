@@ -12,7 +12,7 @@ namespace WpfApp1
 {
     public class VigenereBruteForce
     {
-        public static string Brute(string input, string keyLength, ProgressBar pb)
+        public static string BruteWithKeyLength(string input, string keyLength)
         {
             try
             {
@@ -84,7 +84,7 @@ namespace WpfApp1
 
             return input;
         }
-
+  
         public static bool isAllLetters(string s)
 		{
 			foreach (char c in s)
