@@ -123,7 +123,14 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = VigenereBruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
+                if(Result.LongWaitResponseInMessageBox(OutputTextBox.Text))
+                {
+                    OutputTextBox.Text = VigenereBruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
+                }
+                else
+                {
+                    
+                }
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {

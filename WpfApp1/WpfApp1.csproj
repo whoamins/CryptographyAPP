@@ -112,6 +112,7 @@
       <DependentUpon>CryptoAnalysisWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DialogServices\DragNDropService.cs" />
+    <Compile Include="DialogServices\Result.cs" />
     <Compile Include="DialogServices\SaveFileService.cs" />
     <Compile Include="DialogServices\UploadFileService.cs" />
     <Compile Include="Hashes\MD5Hash.cs" />
