@@ -21,6 +21,7 @@
                         <Button Content="Сохранить файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="SaveFileClick" />
                     </MenuItem>
                     <MenuItem Header="Аккаунт">
+                        <Button x:Name="AdminPanelButton" IsEnabled="False" Content="Админ панель" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="AdminPanelWindow" />
                         <Button Content="Выйти из аккаунта" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="LogoutButtonClick" />
                     </MenuItem>
                 </Menu>

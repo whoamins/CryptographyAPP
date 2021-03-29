@@ -31,6 +31,23 @@ namespace WpfApp1
         {
             InitializeComponent();
             AnalysisSelection.SelectedIndex = -1;
+
+            if (AuthWindow.UserLogin == "admin")
+            {
+                AdminPanelButton.IsEnabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Переход на админ панель
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AdminPanelWindow(object sender, RoutedEventArgs e)
+        {
+            AdminPageWindow admin = new AdminPageWindow();
+            admin.Show();
+            this.Close();
         }
 
         /// <summary>
