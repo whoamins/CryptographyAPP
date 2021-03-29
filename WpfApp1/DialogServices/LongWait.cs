@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace WpfApp1.DialogServices
 {
-    public class Result
+    public class LongWait
     {
         public static bool LongWaitResponseInMessageBox(string output)
         {

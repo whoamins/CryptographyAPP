@@ -54,10 +54,10 @@
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализатор Виженера</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей. Виженер</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">3</TextBlock>
+                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей. Цезарь</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
                     <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">4</TextBlock>

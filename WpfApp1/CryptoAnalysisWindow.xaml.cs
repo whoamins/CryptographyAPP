@@ -24,7 +24,7 @@ namespace WpfApp1
     {
         #region Поля
 
-        public string Alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+        public string Alphabet = "abcdefghijklmnopqrstuvwxyz";
 
         #endregion
         public CryptoAnalysisWindow()
@@ -140,7 +140,7 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                if(Result.LongWaitResponseInMessageBox(OutputTextBox.Text))
+                if(LongWait.LongWaitResponseInMessageBox(OutputTextBox.Text))
                 {
                     OutputTextBox.Text = VigenereBruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
                 }
@@ -151,7 +151,7 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
-
+                OutputTextBox.Text = CaesarCipher.Crack(InputTextBox.Text, Alphabet);
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
