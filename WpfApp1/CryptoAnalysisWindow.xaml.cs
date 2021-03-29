@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.DialogServices;
 
+
 namespace WpfApp1
 {
     /// <summary>

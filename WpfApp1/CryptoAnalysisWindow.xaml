@@ -49,21 +49,21 @@
                 <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
-            <ComboBox x:Name="AnalysisSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic">
+            <ComboBox x:Name="AnalysisSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="260" FontSize="19" FontFamily="Century Gothic">
                 <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей. Виженер</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ шифра Вижнера</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей. Цезарь</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ шифра Цезаря</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">4</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">4</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">5</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">5</TextBlock>
                 </ComboBoxItem>
             </ComboBox>
 
