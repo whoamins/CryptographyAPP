@@ -63,6 +63,33 @@ namespace WpfApp1
             this.Close();
         }
 
+        private void SelectedItem(object sender, SelectionChangedEventArgs e)
+        {
+            if (KeyLength != null)
+            {
+                if (AnalysisSelection.SelectedIndex == 0)
+                {
+                    KeyLength.IsEnabled = false;
+                }
+            }
+            if (AnalysisSelection.SelectedIndex == 1)
+            {
+                KeyLength.IsEnabled = true;
+            }
+            if (AnalysisSelection.SelectedIndex == 2)
+            {
+                KeyLength.IsEnabled = false;
+            }
+            if (AnalysisSelection.SelectedIndex == 3)
+            {
+                KeyLength.IsEnabled = false;
+            }
+            if (AnalysisSelection.SelectedIndex == 4)
+            {
+                KeyLength.IsEnabled = false;
+            }
+        }
+
         /// <summary>
         /// Переход между страницами
         /// </summary>
