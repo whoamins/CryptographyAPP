@@ -8,9 +8,6 @@ namespace WpfApp1
 {
     public class atbash
     {
-        private const string alphabet = "abcdefghijklmnopqrstuvwxyz";
-        private const string ruAlphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
-
         //метод для переворачивания строки
         private static string Reverse(string inputText)
         {
@@ -47,13 +44,13 @@ namespace WpfApp1
         }
 
         //шифрование текста
-        public static string Encrypt(string plainText)
+        public static string Encrypt(string plainText, string alphabet)
         {
             return EncryptDecrypt(plainText, alphabet, Reverse(alphabet));
         }
 
         //расшифровка текста
-        public static string Decrypt(string encryptedText)
+        public static string Decrypt(string encryptedText, string alphabet)
         {
             return EncryptDecrypt(encryptedText, Reverse(alphabet), alphabet);
         }

@@ -155,7 +155,7 @@ namespace WpfApp1
             }
             if(CipherSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text);
+                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
             }
             if(CipherSelection.SelectedIndex == 2)
             {
@@ -167,7 +167,7 @@ namespace WpfApp1
             }
             if(CipherSelection.SelectedIndex == 4)
             {
-                OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text);
+                OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text, Alphabet);
             }
         }
 
@@ -193,7 +193,7 @@ namespace WpfApp1
             }
             if (CipherSelection.SelectedIndex == 1)
             {
-                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text);
+                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
             }
             if (CipherSelection.SelectedIndex == 2)
             {
@@ -205,7 +205,7 @@ namespace WpfApp1
             }
             if (CipherSelection.SelectedIndex == 4)
             {
-                OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text);
+                OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text, Alphabet);
             }
         }
 
