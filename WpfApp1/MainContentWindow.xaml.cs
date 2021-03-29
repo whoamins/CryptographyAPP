@@ -239,6 +239,11 @@ namespace WpfApp1
             SaveFileService.SaveFile(OutputTextBox);
         }
 
+        /// <summary>
+        /// Перемещение окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if(e.ChangedButton == MouseButton.Left)
@@ -247,6 +252,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку закрытия окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

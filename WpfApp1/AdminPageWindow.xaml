@@ -12,21 +12,26 @@
 
     <StackPanel>
         <Grid Height="45">
+            <StackPanel VerticalAlignment="Bottom">
+                <Menu Foreground="#FFA2A2A2" MouseDown="WindowMouseDown">
+                    <MenuItem Header="Аккаунт">
+                        <Button Content="Выйти из аккаунта" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="LogoutButtonClick" />
+                        <Button Content="Вернуться на главную страницу" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="MainContentWindowButtonClick" />
+                    </MenuItem>
+                </Menu>
+            </StackPanel>
             <Button Margin="20 0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                 <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
             </Button>
-    </Grid>
+        </Grid>
 
     <StackPanel Background="WhiteSmoke">
-        <Grid Height="100">
-                <TextBlock Text="Список пользователей" FontSize="30" Foreground="Black" FontWeight="Bold" Margin="20" />
+        <Grid Height="50">
+                <TextBlock Text="Список пользователей" FontSize="30" Foreground="Black" FontWeight="Bold" Margin="20 0" />
             </Grid>
-        <Grid Height="455">
+            <Grid Height="505">
                 <StackPanel>
                     <ListView x:Name="listOfUsers" Margin="10" Width="1000"/>
-                    <StackPanel Orientation="Horizontal" Margin="20 0">
-                        <Button Content="На главную страницу" Margin="20 0" HorizontalAlignment="Right" Width="200" Click="MainContentWindowButtonClick" />
-                    </StackPanel>
                 </StackPanel>
             </Grid>
     </StackPanel>

@@ -45,6 +45,23 @@ namespace WpfApp1
             this.Hide();
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку выхода из аккаунта
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LogoutButtonClick(object sender, RoutedEventArgs e)
+        {
+            AuthWindow auth = new AuthWindow();
+            auth.Show();
+            this.Close();
+        }
+
+        /// <summary>
+        /// Перемещение окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -53,6 +70,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку закрытия окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
