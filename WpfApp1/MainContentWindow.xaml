@@ -9,6 +9,7 @@
         Title="Encrypt / Decrypt"
         AllowsTransparency="True"
         WindowStartupLocation="CenterScreen"
+        FontFamily="Century Gothic"
         WindowStyle="None"
         ResizeMode="NoResize" Height="600" Width="1080" Foreground="White" MouseDown="WindowMouseDown">
     
@@ -49,7 +50,7 @@
                     <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
                 </Border>
 
-                <ComboBox x:Name="CipherSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" SelectionChanged="ComboBox_Selected">
+                <ComboBox x:Name="CipherSelection" materialDesign:HintAssist.Hint="Шифр" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="ComboBox_Selected">
                     <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
                         <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
                     </ComboBoxItem>
@@ -66,6 +67,15 @@
                         <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
                     </ComboBoxItem>
                 </ComboBox>
+
+                <ComboBox x:Name="LanguageSelection" materialDesign:HintAssist.Hint="Алфавит" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 100" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="LanguageComboBox_Selected">
+                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Русский</TextBlock>
+                    </ComboBoxItem>
+                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Английский</TextBlock>
+                    </ComboBoxItem>
+            </ComboBox>
 
                 <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
                     <TextBox x:Name="CipherKey" Margin="0 20" materialDesign:HintAssist.Hint="Ключ" Width="250" Foreground="Black" />

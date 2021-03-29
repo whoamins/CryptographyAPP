@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:WpfApp1"
              ShutdownMode="OnExplicitShutdown"
-             StartupUri="AdminPageWindow.xaml">
+             StartupUri="MainContentWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

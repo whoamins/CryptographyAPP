@@ -24,7 +24,7 @@ namespace WpfApp1
     {
         #region Поля
 
-        public string Alphabet = "abcdefghijklmnopqrstuvwxyz";
+        private string Alphabet;
 
         #endregion
 
@@ -32,6 +32,7 @@ namespace WpfApp1
         {
             InitializeComponent();
             CipherSelection.SelectedIndex = -1;
+            LanguageSelection.SelectedIndex = -1;
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Обработчик выбранного элемента в ComboBox
+        /// Обработчик выбранного шифра
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -112,6 +113,23 @@ namespace WpfApp1
             if (CipherSelection.SelectedIndex == 4)
             {
                 CipherKey.IsEnabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Обработчик выбранного языка алфавита
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LanguageComboBox_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            if(LanguageSelection.SelectedIndex == 0)
+            {
+                Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            }
+            if(LanguageSelection.SelectedIndex == 1)
+            {
+                Alphabet = "abcdefghijklmnopqrstuvwxyz";
             }
         }
 
