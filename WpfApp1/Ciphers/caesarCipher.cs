@@ -18,25 +18,30 @@ namespace WpfApp1
         /// <returns></returns>
         public static string Encode(string text, int key, string alphabet)
         {
-            var minimizedText = text.ToLower();
-            var letterQuntity = alphabet.Length;
-            var result = "";
+            var minimizedText = text.ToLower(); // Переводим текст в нижний регистр, для удобства вычисления
+            var letterQuntity = alphabet.Length; // Длина алфавита
+            var result = ""; // Строка результата
 
+            // Проходимся по тексту
             for (int i = 0; i < minimizedText.Length; i++)
             {
-                var c = minimizedText[i];
-                var index = alphabet.IndexOf(c);
-                if (index < 0)
+                var c = minimizedText[i]; // Получаем символ, на котором сейчас находимся 
+                var index = alphabet.IndexOf(c); // Получаем индекс символа
+
+                if (index < 0) // Если индекс меньше нуля, то добавляем его к результату
                 {
                     result += c.ToString();
                 }
-                else
+                else // Если индекс больше нуля то вычисляем codeIndex.
                 {
                     var codeIndex = (letterQuntity + index + key) % letterQuntity;
+
+                    // И добавляем к результату символ алфавита с индексом, который мы вычислили выше.
                     result += alphabet[codeIndex];
                 }
             }
 
+            // Возращаем результат
             return result;
         }
 

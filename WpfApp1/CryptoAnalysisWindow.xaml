@@ -15,7 +15,7 @@
 
         <Grid Height="45">
             <StackPanel VerticalAlignment="Bottom">
-                <Menu Foreground="#FFA2A2A2">
+                <Menu Foreground="#FFA2A2A2" MouseDown="WindowMouseDown">
                     <MenuItem Header="Файл">
                         <Button Content="Открыть файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="UploadFileClick" />
                         <Button Content="Сохранить файл" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="SaveFileClick" />
@@ -29,6 +29,7 @@
             <Button Margin="20 0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                 <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
             </Button>
+            <TextBlock x:Name="Welcome" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA2A2A2" FontSize="16"/>
         </Grid>
 
         <Grid Height="70">
@@ -48,7 +49,7 @@
                 <TextBox x:Name="InputTextBox" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
-            <ComboBox x:Name="AnalysisSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="260" FontSize="19" FontFamily="Century Gothic" SelectionChanged="SelectedItem">
+            <ComboBox x:Name="AnalysisSelection" materialDesign:HintAssist.Hint="Анализ" Foreground="Beige" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="260" FontSize="19" FontFamily="Century Gothic" SelectionChanged="SelectedItem">
                 <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
                     <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
                 </ComboBoxItem>

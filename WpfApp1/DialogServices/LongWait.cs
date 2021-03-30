@@ -13,6 +13,7 @@ namespace WpfApp1.DialogServices
         {
             MessageBoxResult result = MessageBox.Show("Это действие может занять много времени", "Вы уверены?", MessageBoxButton.OKCancel);
 
+            // В зависимости от результата ( ОК или Отмена) выполняем действие.
             switch (result)
             {
                 case MessageBoxResult.OK:

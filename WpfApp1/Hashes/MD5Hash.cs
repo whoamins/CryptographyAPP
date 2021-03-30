@@ -23,11 +23,13 @@ namespace WpfApp1
 
             StringBuilder sb = new StringBuilder();
 
+            // Добавляем в результат хэш
             foreach (var b in hashenc)
             {
                 sb.Append(b.ToString("x2"));
             }
             
+            // Возвращаем результат
             return sb.ToString();
         }
     }

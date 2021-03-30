@@ -33,6 +33,7 @@ namespace WpfApp1
             InitializeComponent();
             CipherSelection.SelectedIndex = -1;
             LanguageSelection.SelectedIndex = -1;
+            Welcome.Text = "Привет, " + AuthWindow.UserLogin;
 
             if(AuthWindow.UserLogin == "admin")
             {

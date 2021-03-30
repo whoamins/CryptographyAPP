@@ -25,11 +25,12 @@
                         <Button x:Name="AdminPanelButton" IsEnabled="False" Content="Админ панель" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="AdminPanelWindow" />
                         <Button Content="Выйти из аккаунта" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" HorizontalAlignment="Left" Click="LogoutButtonClick" />
                     </MenuItem>
-                </Menu>
+                                    </Menu>
             </StackPanel>
             <Button Margin="20 0" Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton }" Click="CloseWindowButtonClick">
                 <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25"/>
             </Button>
+            <TextBlock x:Name="Welcome" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA2A2A2" FontSize="16"/>
         </Grid>
 
         <Grid Height="70">
