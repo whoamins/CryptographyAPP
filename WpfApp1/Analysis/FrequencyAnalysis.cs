@@ -39,5 +39,5 @@ namespace WpfApp1
 
             return output;
         }
-	}
+    }
 }

@@ -25,13 +25,14 @@ namespace WpfApp1
     {
         #region Поля
 
-        public string Alphabet = "abcdefghijklmnopqrstuvwxyz";
+        public string Alphabet;
 
         #endregion
         public CryptoAnalysisWindow()
         {
             InitializeComponent();
             AnalysisSelection.SelectedIndex = -1;
+            LanguageSelection.SelectedIndex = -1;
 
             if (AuthWindow.UserLogin == "admin")
             {
@@ -63,6 +64,23 @@ namespace WpfApp1
             this.Close();
         }
 
+        /// <summary>
+        /// Обработчик выбранного языка алфавита
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void LanguageComboBox_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            if (LanguageSelection.SelectedIndex == 0)
+            {
+                Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+            }
+            if (LanguageSelection.SelectedIndex == 1)
+            {
+                Alphabet = "abcdefghijklmnopqrstuvwxyz";
+            }
+        }
+
         private void SelectedItem(object sender, SelectionChangedEventArgs e)
         {
             if (KeyLength != null)
@@ -70,23 +88,26 @@ namespace WpfApp1
                 if (AnalysisSelection.SelectedIndex == 0)
                 {
                     KeyLength.IsEnabled = false;
+                    LanguageSelection.IsEnabled = false;
                 }
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
                 KeyLength.IsEnabled = true;
+                LanguageSelection.IsEnabled = false;
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
                 KeyLength.IsEnabled = false;
+                LanguageSelection.IsEnabled = true;
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
-                KeyLength.IsEnabled = false;
+                KeyLength.IsEnabled = true;
             }
             if (AnalysisSelection.SelectedIndex == 4)
             {
-                KeyLength.IsEnabled = false;
+                KeyLength.IsEnabled = true;
             }
         }
 
