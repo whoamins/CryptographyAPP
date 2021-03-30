@@ -41,7 +41,10 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
+            // Получаем логин, обрезая пробелы в конце и в начале
             string login = textBoxLogin.Text.Trim();
+
+            // Хешируем пароль, что бы сравнить с захешированным в базе данных. Так же обрезаем пробелы.
             string password = EncryptPassword.Encrypt(passwordBoxLogin.Password).Trim();
 
             // Проверка, не пустые ли логин и пароль
@@ -58,8 +61,8 @@ namespace WpfApp1
 
                 //UserLogin = loginUser.Login;
 
-                // Если залогинлся админ -> подгрузить пользователю админ панель
-                if (loginUser != null && loginUser.Login == "admin")
+                // Если залогинлся админ(т.е. пользователя с id = 0) -> подгрузить пользователю админ панель
+                if (loginUser != null && loginUser.id == 0)
                 {
                     AdminPageWindow adminPageWindow = new AdminPageWindow();
                     adminPageWindow.Show();
@@ -98,6 +101,11 @@ namespace WpfApp1
             this.Hide();
         }
 
+        /// <summary>
+        /// Перемещение окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -105,6 +113,5 @@ namespace WpfApp1
                 this.DragMove();
             }
         }
-
     }
 }
