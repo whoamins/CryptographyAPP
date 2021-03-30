@@ -100,18 +100,18 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                KeyLength.IsEnabled = true;
+                KeyLength.IsEnabled = false;
                 LanguageSelection.IsEnabled = false;
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
-                KeyLength.IsEnabled = false;
-                LanguageSelection.IsEnabled = true;
+                KeyLength.IsEnabled = true;
+                LanguageSelection.IsEnabled = false;
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
                 KeyLength.IsEnabled = false;
-                LanguageSelection.IsEnabled = false;
+                LanguageSelection.IsEnabled = true;
             }
         }
 
@@ -193,26 +193,22 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 1)
             {
-                if(LongWait.LongWaitResponseInMessageBox(OutputTextBox.Text))
-                {
-                    OutputTextBox.Text = VigenereBruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
-                }
-                else
-                {
-                    
-                }
+                OutputTextBox.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBox.Text);
             }
             if (AnalysisSelection.SelectedIndex == 2)
             {
-                OutputTextBox.Text = CaesarCipher.Crack(InputTextBox.Text, Alphabet);
+                if(LongWait.LongWaitResponseInMessageBox(OutputTextBox.Text))
+                {
+                    OutputTextBox.Text = BruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
+                }
+                else
+                {
+
+                }
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
-                OutputTextBox.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBox.Text);
-            }
-            if (AnalysisSelection.SelectedIndex == 4)
-            {
-
+                OutputTextBox.Text = CaesarCipher.Crack(InputTextBox.Text, Alphabet);
             }
         }
 
