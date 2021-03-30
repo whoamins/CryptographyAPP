@@ -23,8 +23,8 @@ namespace WpfApp1
         public HashWindow()
         {
             InitializeComponent();
-
             HashSelection.SelectedIndex = -1;
+
             if (AuthWindow.UserLogin == "admin")
             {
                 AdminPanelButton.IsEnabled = true;
@@ -149,6 +149,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Перемещение окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -157,6 +162,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку закрытия окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();

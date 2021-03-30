@@ -81,6 +81,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработчик выбранного элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SelectedItem(object sender, SelectionChangedEventArgs e)
         {
             if (KeyLength != null)
@@ -214,6 +219,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Перемещение окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -222,6 +232,11 @@ namespace WpfApp1
             }
         }
 
+        /// <summary>
+        /// Обработка нажатия на кнопку закрытия окна
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CloseWindowButtonClick(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
