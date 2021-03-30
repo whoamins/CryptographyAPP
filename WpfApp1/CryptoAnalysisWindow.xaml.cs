@@ -104,10 +104,12 @@ namespace WpfApp1
             if (AnalysisSelection.SelectedIndex == 3)
             {
                 KeyLength.IsEnabled = true;
+                LanguageSelection.IsEnabled = false;
             }
             if (AnalysisSelection.SelectedIndex == 4)
             {
                 KeyLength.IsEnabled = true;
+                LanguageSelection.IsEnabled = false;
             }
         }
 
