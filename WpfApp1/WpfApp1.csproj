@@ -133,6 +133,7 @@
       <DependentUpon>MainContentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="User.cs" />
+    <Compile Include="Utils\EncryptPassword.cs" />
     <Page Include="AdminPageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

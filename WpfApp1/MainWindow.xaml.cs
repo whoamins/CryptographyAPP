@@ -78,9 +78,8 @@ namespace WpfApp1
             }
 
             #region Регистрация 
-
             // Создание нового пользователя с login, email, password полученным из textbox
-            User user = new User(login, email, password); 
+            User user = new User(login, email, EncryptPassword.Encrypt(password)); 
             
             // Добавляем нового пользователя в базу данных
             db.Users.Add(user);

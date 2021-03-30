@@ -42,7 +42,7 @@ namespace WpfApp1
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
             string login = textBoxLogin.Text.Trim();
-            string password = passwordBoxLogin.Password.Trim();
+            string password = EncryptPassword.Encrypt(passwordBoxLogin.Password).Trim();
 
             // Проверка, не пустые ли логин и пароль
             if (login != "" && password != "")
@@ -56,7 +56,7 @@ namespace WpfApp1
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 }
 
-                UserLogin = loginUser.Login;
+                //UserLogin = loginUser.Login;
 
                 // Если залогинлся админ -> подгрузить пользователю админ панель
                 if (loginUser != null && loginUser.Login == "admin")
