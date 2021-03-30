@@ -73,13 +73,20 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void LanguageComboBox_Selected(object sender, SelectionChangedEventArgs e)
         {
-            if (LanguageSelection.SelectedIndex == 0)
+            try
             {
-                Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+                if (LanguageSelection.SelectedIndex == 0)
+                {
+                    Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+                }
+                if (LanguageSelection.SelectedIndex == 1)
+                {
+                    Alphabet = "abcdefghijklmnopqrstuvwxyz";
+                }
             }
-            if (LanguageSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                Alphabet = "abcdefghijklmnopqrstuvwxyz";
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -90,28 +97,36 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void SelectedItem(object sender, SelectionChangedEventArgs e)
         {
-            if (KeyLength != null)
+            try
             {
-                if (AnalysisSelection.SelectedIndex == 0)
+                if (KeyLength != null)
+                {
+                    if (AnalysisSelection.SelectedIndex == 0)
+                    {
+                        KeyLength.IsEnabled = false;
+                        LanguageSelection.IsEnabled = false;
+                    }
+                }
+                if (AnalysisSelection.SelectedIndex == 1)
                 {
                     KeyLength.IsEnabled = false;
                     LanguageSelection.IsEnabled = false;
                 }
+                if (AnalysisSelection.SelectedIndex == 2)
+                {
+                    KeyLength.IsEnabled = true;
+                    LanguageSelection.IsEnabled = false;
+                }
+                if (AnalysisSelection.SelectedIndex == 3)
+                {
+                    KeyLength.IsEnabled = false;
+                    LanguageSelection.IsEnabled = true;
+                }
             }
-            if (AnalysisSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                KeyLength.IsEnabled = false;
-                LanguageSelection.IsEnabled = false;
-            }
-            if (AnalysisSelection.SelectedIndex == 2)
-            {
-                KeyLength.IsEnabled = true;
-                LanguageSelection.IsEnabled = false;
-            }
-            if (AnalysisSelection.SelectedIndex == 3)
-            {
-                KeyLength.IsEnabled = false;
-                LanguageSelection.IsEnabled = true;
+                MessageBoxes.ErrorMessageBox();
+
             }
         }
 
@@ -122,29 +137,36 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)
         {
-            // Получаем индекс окна
-            int index = int.Parse(((Button)e.Source).Uid);
-
-            // Переход между окнами
-            switch (index)
+            try
             {
-                case 0:
-                    var mainWindow = new MainContentWindow();
-                    mainWindow.Show();
-                    this.Hide();
-                    break;
-                case 1:
-                    var hashWindow = new HashWindow();
-                    hashWindow.Show();
-                    this.Hide();
-                    break;
-                case 2:
-                    var analysisWindow = new CryptoAnalysisWindow();
-                    analysisWindow.Show();
-                    this.Hide();
-                    break;
-                case 3:
-                    break;
+                // Получаем индекс окна
+                int index = int.Parse(((Button)e.Source).Uid);
+
+                // Переход между окнами
+                switch (index)
+                {
+                    case 0:
+                        var mainWindow = new MainContentWindow();
+                        mainWindow.Show();
+                        this.Hide();
+                        break;
+                    case 1:
+                        var hashWindow = new HashWindow();
+                        hashWindow.Show();
+                        this.Hide();
+                        break;
+                    case 2:
+                        var analysisWindow = new CryptoAnalysisWindow();
+                        analysisWindow.Show();
+                        this.Hide();
+                        break;
+                    case 3:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -155,7 +177,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void UploadFileClick(object sender, RoutedEventArgs e)
         {
-            UploadFileService.UploadFile(InputTextBox);
+            try
+            {
+                UploadFileService.UploadFile(InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -165,7 +194,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void SaveFileClick(object sender, RoutedEventArgs e)
         {
-            SaveFileService.SaveFile(OutputTextBox);
+            try
+            {
+                SaveFileService.SaveFile(OutputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -175,7 +211,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void DragAndDrop(object sender, DragEventArgs e)
         {
-            DragNDropService.DragAndDrop(e, InputTextBox);
+            try
+            {
+                DragNDropService.DragAndDrop(e, InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -185,30 +228,37 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void AnalysisButton(object sender, RoutedEventArgs e)
         {
-            // В зависимости от выбранного анализа выдаем разный результат
+            try
+            {
+                // В зависимости от выбранного анализа выдаем разный результат
 
-            if (AnalysisSelection.SelectedIndex == 0)
-            {
-                OutputTextBox.Text = FrequencyAnalysis.Analysis(InputTextBox.Text, OutputTextBox.Text);
-            }
-            if (AnalysisSelection.SelectedIndex == 1)
-            {
-                OutputTextBox.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBox.Text);
-            }
-            if (AnalysisSelection.SelectedIndex == 2)
-            {
-                if(LongWait.LongWaitResponseInMessageBox(OutputTextBox.Text))
+                if (AnalysisSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = BruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
+                    OutputTextBox.Text = FrequencyAnalysis.Analysis(InputTextBox.Text, OutputTextBox.Text);
                 }
-                else
+                if (AnalysisSelection.SelectedIndex == 1)
                 {
+                    OutputTextBox.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBox.Text);
+                }
+                if (AnalysisSelection.SelectedIndex == 2)
+                {
+                    if (LongWait.LongWaitResponseInMessageBox(OutputTextBox.Text))
+                    {
+                        OutputTextBox.Text = BruteForce.BruteWithKeyLength(InputTextBox.Text, KeyLength.Text);
+                    }
+                    else
+                    {
 
+                    }
+                }
+                if (AnalysisSelection.SelectedIndex == 3)
+                {
+                    OutputTextBox.Text = CaesarCipher.Crack(InputTextBox.Text, Alphabet);
                 }
             }
-            if (AnalysisSelection.SelectedIndex == 3)
+            catch (Exception)
             {
-                OutputTextBox.Text = CaesarCipher.Crack(InputTextBox.Text, Alphabet);
+                MessageBoxes.ErrorMessageBox();
             }
         }
 

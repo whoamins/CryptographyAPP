@@ -134,6 +134,7 @@
     </Compile>
     <Compile Include="User.cs" />
     <Compile Include="Utils\EncryptPassword.cs" />
+    <Compile Include="Utils\MessageBoxes.cs" />
     <Page Include="AdminPageWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

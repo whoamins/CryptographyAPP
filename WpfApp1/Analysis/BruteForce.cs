@@ -98,7 +98,6 @@ namespace WpfApp1
 			}
 			return true;
 		}
-
 		static string decipherVeginere(string text, string key)
 		{
 			StringBuilder result = new StringBuilder();

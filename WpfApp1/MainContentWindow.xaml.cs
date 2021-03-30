@@ -72,30 +72,37 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)  
         {
-            // Получаем индекс окна
-            int index = int.Parse(((Button)e.Source).Uid);
-
-
-            // Переход между окнами
-            switch (index)
+            try
             {
-                case 0:
-                    var mainWindow = new MainContentWindow();
-                    mainWindow.Show();
-                    this.Close();
-                    break;
-                case 1:
-                    var hashWindow = new HashWindow();
-                    hashWindow.Show();
-                    this.Close();
-                    break;
-                case 2:
-                    var analysisWindow = new CryptoAnalysisWindow();
-                    analysisWindow.Show();
-                    this.Close();
-                    break;
-                case 3:
-                    break;
+                // Получаем индекс окна
+                int index = int.Parse(((Button)e.Source).Uid);
+
+
+                // Переход между окнами
+                switch (index)
+                {
+                    case 0:
+                        var mainWindow = new MainContentWindow();
+                        mainWindow.Show();
+                        this.Close();
+                        break;
+                    case 1:
+                        var hashWindow = new HashWindow();
+                        hashWindow.Show();
+                        this.Close();
+                        break;
+                    case 2:
+                        var analysisWindow = new CryptoAnalysisWindow();
+                        analysisWindow.Show();
+                        this.Close();
+                        break;
+                    case 3:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -109,28 +116,35 @@ namespace WpfApp1
             // Проверка выбранного элемента в реальном времени, что бы блокировать
             // ввод ключа, в зависимости от выбранного шифры 
 
-            if (CipherKey != null)
+            try
             {
-                if (CipherSelection.SelectedIndex == 0)
+                if (CipherKey != null)
+                {
+                    if (CipherSelection.SelectedIndex == 0)
+                    {
+                        CipherKey.IsEnabled = true;
+                    }
+                }
+                if (CipherSelection.SelectedIndex == 1)
                 {
                     CipherKey.IsEnabled = true;
                 }
+                if (CipherSelection.SelectedIndex == 2)
+                {
+                    CipherKey.IsEnabled = false;
+                }
+                if (CipherSelection.SelectedIndex == 3)
+                {
+                    CipherKey.IsEnabled = false;
+                }
+                if (CipherSelection.SelectedIndex == 4)
+                {
+                    CipherKey.IsEnabled = false;
+                }
             }
-            if (CipherSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                CipherKey.IsEnabled = true;
-            }
-            if (CipherSelection.SelectedIndex == 2)
-            {
-                CipherKey.IsEnabled = false;
-            }
-            if (CipherSelection.SelectedIndex == 3)
-            {
-                CipherKey.IsEnabled = false;
-            }
-            if (CipherSelection.SelectedIndex == 4)
-            {
-                CipherKey.IsEnabled = false;
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -141,13 +155,20 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void LanguageComboBox_Selected(object sender, SelectionChangedEventArgs e)
         {
-            if(LanguageSelection.SelectedIndex == 0)
+            try
             {
-                Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+                if (LanguageSelection.SelectedIndex == 0)
+                {
+                    Alphabet = "aбвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+                }
+                if (LanguageSelection.SelectedIndex == 1)
+                {
+                    Alphabet = "abcdefghijklmnopqrstuvwxyz";
+                }
             }
-            if(LanguageSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                Alphabet = "abcdefghijklmnopqrstuvwxyz";
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -160,32 +181,39 @@ namespace WpfApp1
         {
             // В зависимости от выбранного шифра выдаем разный результат
 
-            if (CipherSelection.SelectedIndex == 0)
+            try
             {
-                try
+                if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                    try
+                    {
+                        OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                catch (Exception)
+                if (CipherSelection.SelectedIndex == 1)
                 {
-                    MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
+                }
+                if (CipherSelection.SelectedIndex == 2)
+                {
+                    OutputTextBox.Text = base64.Base64Encrypt(InputTextBox.Text);
+                }
+                if (CipherSelection.SelectedIndex == 3)
+                {
+                    OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+                }
+                if (CipherSelection.SelectedIndex == 4)
+                {
+                    OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text, Alphabet);
                 }
             }
-            if(CipherSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
-            }
-            if(CipherSelection.SelectedIndex == 2)
-            {
-                OutputTextBox.Text = base64.Base64Encrypt(InputTextBox.Text);
-            }
-            if(CipherSelection.SelectedIndex == 3)
-            {
-                OutputTextBox.Text = binary.Encode(InputTextBox.Text);
-            }
-            if(CipherSelection.SelectedIndex == 4)
-            {
-                OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text, Alphabet);
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -198,32 +226,39 @@ namespace WpfApp1
         {
             // В зависимости от выбранного шифра выдаем разный результат
 
-            if (CipherSelection.SelectedIndex == 0)
+            try
             {
-                try
+                if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                    try
+                    {
+                        OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
-                catch (Exception)
+                if (CipherSelection.SelectedIndex == 1)
                 {
-                    MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+                    OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
+                }
+                if (CipherSelection.SelectedIndex == 2)
+                {
+                    OutputTextBox.Text = base64.Base64Decrypt(InputTextBox.Text);
+                }
+                if (CipherSelection.SelectedIndex == 3)
+                {
+                    OutputTextBox.Text = binary.Decode(InputTextBox.Text);
+                }
+                if (CipherSelection.SelectedIndex == 4)
+                {
+                    OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text, Alphabet);
                 }
             }
-            if (CipherSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
-            }
-            if (CipherSelection.SelectedIndex == 2)
-            {
-                OutputTextBox.Text = base64.Base64Decrypt(InputTextBox.Text);
-            }
-            if (CipherSelection.SelectedIndex == 3)
-            {
-                OutputTextBox.Text = binary.Decode(InputTextBox.Text);
-            }
-            if (CipherSelection.SelectedIndex == 4)
-            {
-                OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text, Alphabet);
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -234,7 +269,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void UploadFileClick(object sender, RoutedEventArgs e)
         {
-            UploadFileService.UploadFile(InputTextBox);
+            try
+            {
+                UploadFileService.UploadFile(InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -244,7 +286,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void DragAndDrop(object sender, DragEventArgs e)
         {
-            DragNDropService.DragAndDrop(e, InputTextBox);
+            try
+            {
+                DragNDropService.DragAndDrop(e, InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -254,7 +303,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void SaveFileClick(object sender, RoutedEventArgs e)
         {
-            SaveFileService.SaveFile(OutputTextBox);
+            try
+            {
+                SaveFileService.SaveFile(OutputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>

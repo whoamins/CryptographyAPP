@@ -63,29 +63,36 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void PageButtonClick(object sender, RoutedEventArgs e)
         {
-            // Получаем индекс окна
-            int index = int.Parse(((Button)e.Source).Uid);
-
-            // Переход между окнами
-            switch (index)
+            try
             {
-                case 0:
-                    var mainWindow = new MainContentWindow();
-                    mainWindow.Show();
-                    this.Close();
-                    break;
-                case 1:
-                    var hashWindow = new HashWindow();
-                    hashWindow.Show();
-                    this.Close();
-                    break;
-                case 2:
-                    var analysisWindow = new CryptoAnalysisWindow();
-                    analysisWindow.Show();
-                    this.Close();
-                    break;
-                case 3:
-                    break;
+                // Получаем индекс окна
+                int index = int.Parse(((Button)e.Source).Uid);
+
+                // Переход между окнами
+                switch (index)
+                {
+                    case 0:
+                        var mainWindow = new MainContentWindow();
+                        mainWindow.Show();
+                        this.Close();
+                        break;
+                    case 1:
+                        var hashWindow = new HashWindow();
+                        hashWindow.Show();
+                        this.Close();
+                        break;
+                    case 2:
+                        var analysisWindow = new CryptoAnalysisWindow();
+                        analysisWindow.Show();
+                        this.Close();
+                        break;
+                    case 3:
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -96,7 +103,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void UploadFileClick(object sender, RoutedEventArgs e)
         {
-            UploadFileService.UploadFile(InputTextBox);
+            try
+            {
+                UploadFileService.UploadFile(InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -106,7 +120,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void SaveFileClick(object sender, RoutedEventArgs e)
         {
-            SaveFileService.SaveFile(OutputTextBox);
+            try
+            {
+                SaveFileService.SaveFile(OutputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -116,7 +137,14 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void DragAndDrop(object sender, DragEventArgs e)
         {
-            DragNDropService.DragAndDrop(e, InputTextBox);
+            try
+            {
+                DragNDropService.DragAndDrop(e, InputTextBox);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -128,25 +156,32 @@ namespace WpfApp1
         {
             // В зависимости от выбранного хэш-алгоритма выдаем разный результат
 
-            if (HashSelection.SelectedIndex == 0)
+            try
             {
-                OutputTextBox.Text = MD5Hash.GetHash(InputTextBox.Text);
+                if (HashSelection.SelectedIndex == 0)
+                {
+                    OutputTextBox.Text = MD5Hash.GetHash(InputTextBox.Text);
+                }
+                if (HashSelection.SelectedIndex == 1)
+                {
+                    OutputTextBox.Text = SHA1Hash.GetHash(InputTextBox.Text);
+                }
+                if (HashSelection.SelectedIndex == 2)
+                {
+                    OutputTextBox.Text = SHA256Hash.GetHash(InputTextBox.Text);
+                }
+                if (HashSelection.SelectedIndex == 3)
+                {
+                    OutputTextBox.Text = SHA512Hash.GetHash(InputTextBox.Text);
+                }
+                if (HashSelection.SelectedIndex == 4)
+                {
+                    OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
+                }
             }
-            if (HashSelection.SelectedIndex == 1)
+            catch (Exception)
             {
-                OutputTextBox.Text = SHA1Hash.GetHash(InputTextBox.Text);
-            }
-            if (HashSelection.SelectedIndex == 2)
-            {
-                OutputTextBox.Text = SHA256Hash.GetHash(InputTextBox.Text);
-            }
-            if (HashSelection.SelectedIndex == 3)
-            {
-                OutputTextBox.Text = SHA512Hash.GetHash(InputTextBox.Text);
-            }
-            if (HashSelection.SelectedIndex == 4)
-            {
-                OutputTextBox.Text = RIPEMD160Hash.GetHash(InputTextBox.Text);
+                MessageBoxes.ErrorMessageBox();
             }
         }
 
