@@ -46,7 +46,7 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
                 </Border.Effect>
-                <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                <TextBox x:Name="InputTextBox" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
             <ComboBox x:Name="HashSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="19" FontFamily="Century Gothic">

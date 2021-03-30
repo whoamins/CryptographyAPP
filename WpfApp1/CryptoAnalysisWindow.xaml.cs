@@ -108,12 +108,7 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
-                KeyLength.IsEnabled = true;
-                LanguageSelection.IsEnabled = false;
-            }
-            if (AnalysisSelection.SelectedIndex == 4)
-            {
-                KeyLength.IsEnabled = true;
+                KeyLength.IsEnabled = false;
                 LanguageSelection.IsEnabled = false;
             }
         }
@@ -211,7 +206,7 @@ namespace WpfApp1
             }
             if (AnalysisSelection.SelectedIndex == 3)
             {
-
+                OutputTextBox.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBox.Text);
             }
             if (AnalysisSelection.SelectedIndex == 4)
             {

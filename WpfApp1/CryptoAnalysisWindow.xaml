@@ -46,7 +46,7 @@
                 <Border.Effect>
                     <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
                 </Border.Effect>
-                <TextBox x:Name="InputTextBox" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                <TextBox x:Name="InputTextBox" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
             </Border>
 
             <ComboBox x:Name="AnalysisSelection" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="260" FontSize="19" FontFamily="Century Gothic" SelectionChanged="SelectedItem">
@@ -60,10 +60,7 @@
                     <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ шифра Цезаря</TextBlock>
                 </ComboBoxItem>
                 <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">4</TextBlock>
-                </ComboBoxItem>
-                <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">5</TextBlock>
+                    <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ по Част. Анализу</TextBlock>
                 </ComboBoxItem>
             </ComboBox>
 
