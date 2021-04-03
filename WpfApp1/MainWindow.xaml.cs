@@ -45,23 +45,20 @@ namespace WpfApp1
             // Проверка введеных значений
             if (login.Length < 3)
             {
-                textBoxLogin.ToolTip = "Пароль должен содержать в себе более 3 символов";
-                textBoxLogin.Background = Brushes.Red;
+                MarkInvalid(textBoxLogin);
             }
             else if (password.Length < 8)
             {
-                passwordBoxLogin.ToolTip = "Пароль должен содержать в себе более 8 символов";
-                passwordBoxLogin.Background = Brushes.Red;
+                MarkInvalid(passwordBoxLogin);
             }
             else if (password != repeatPassword)
             {
-                RepeatPasswordBoxLogin.ToolTip = "Пароли не совпадают";
-                RepeatPasswordBoxLogin.Background = Brushes.Red;
+                MarkInvalid(passwordBoxLogin);
+                MarkInvalid(RepeatPasswordBoxLogin);
             }
             else if (email.Length < 5 || !email.Contains("@") || !email.Contains("."))
             {
-                textBoxEmail.ToolTip = "Нужно ввести корректный email";
-                textBoxEmail.Background = Brushes.Red;
+                MarkInvalid(textBoxEmail);
             }
             else
             {
@@ -79,8 +76,8 @@ namespace WpfApp1
 
             #region Регистрация 
             // Создание нового пользователя с login, email, password полученным из textbox
-            User user = new User(login, email, EncryptPassword.Encrypt(password)); 
-            
+            User user = new User(login, email, EncryptPassword.Encrypt(password));
+
             // Добавляем нового пользователя в базу данных
             db.Users.Add(user);
 
@@ -98,6 +95,16 @@ namespace WpfApp1
             this.Hide();
 
             #endregion
+        }
+
+        /// <summary>
+        /// Отображение ошибки в поле
+        /// </summary>
+        /// <param name="control"></param>
+        public void MarkInvalid(Control control)
+        {
+            control.ToolTip = "Поле введено не корректно!";
+            control.Background = Brushes.Red;
         }
 
         /// <summary>
