@@ -33,7 +33,6 @@ namespace WpfApp1
             InitializeComponent();
             CipherSelection.SelectedIndex = -1;
             LanguageSelection.SelectedIndex = -1;
-            Welcome.Text = "Привет, " + AuthWindow.UserLogin;
 
             if(AuthWindow.UserLogin == "admin")
             {
@@ -180,19 +179,9 @@ namespace WpfApp1
         private void EncryptButtonClick(object sender, RoutedEventArgs e)
         {
             // В зависимости от выбранного шифра выдаем разный результат
-
-            try
-            {
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    try
-                    {
-                        OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                        OutputTextBox.Text = caesarCipher.caesarCipherEncryptor(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
@@ -210,11 +199,6 @@ namespace WpfApp1
                 {
                     OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text, Alphabet);
                 }
-            }
-            catch (Exception)
-            {
-                MessageBoxes.ErrorMessageBox();
-            }
         }
 
         /// <summary>
@@ -230,14 +214,7 @@ namespace WpfApp1
             {
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    try
-                    {
-                        OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Ключ должен быть числом!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                    OutputTextBox.Text = caesarCipher.caesarCipherEncryptor(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {

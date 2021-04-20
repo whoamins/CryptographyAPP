@@ -36,6 +36,11 @@ namespace WpfApp1
                 {
                     var codeIndex = (letterQuntity + index + key) % letterQuntity;
 
+                    if(codeIndex >= alphabet.Length)
+                    {
+                        codeIndex = 0;
+                    }
+
                     // И добавляем к результату символ алфавита с индексом, который мы вычислили выше.
                     result += alphabet[codeIndex];
                 }
@@ -68,5 +73,32 @@ namespace WpfApp1
         {
             return Encode(encryptedMessage, key, alphabet);
         }
+
+        public static string caesarCipherEncryptor(string input, int key, string alphabet)
+        {
+            StringBuilder result = new StringBuilder();
+
+            int newKey = key % alphabet.Length;
+
+            foreach(char letter in input)
+            {
+                result.Append(getNewLetter(letter, newKey, alphabet));
+            }
+
+            return result.ToString();
+        }
+
+        public static char getNewLetter(char letter, int key, string alphabet)
+        {
+            int newLetterCode = alphabet.IndexOf(letter) + key;
+            return alphabet[newLetterCode % 26];
+        }
+
+
+
+
+
+
+
     }
 }

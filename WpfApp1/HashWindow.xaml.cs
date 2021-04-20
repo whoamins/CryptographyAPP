@@ -24,7 +24,6 @@ namespace WpfApp1
         {
             InitializeComponent();
             HashSelection.SelectedIndex = -1;
-            Welcome.Text = "Привет, " + AuthWindow.UserLogin;
 
             if (AuthWindow.UserLogin == "admin")
             {

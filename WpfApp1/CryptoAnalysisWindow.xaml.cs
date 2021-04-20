@@ -34,8 +34,6 @@ namespace WpfApp1
             AnalysisSelection.SelectedIndex = -1;
             LanguageSelection.SelectedIndex = -1;
 
-            Welcome.Text = "Привет, " + AuthWindow.UserLogin;
-
             if (AuthWindow.UserLogin == "admin")
             {
                 AdminPanelButton.IsEnabled = true;

@@ -59,10 +59,10 @@ namespace WpfApp1
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
                 }
 
-                UserLogin = loginUser.Login;
+                //UserLogin = loginUser.Login;
 
                 // Если залогинлся админ(т.е. пользователя с id = 0) -> подгрузить пользователю админ панель
-                if (loginUser != null && loginUser.id == 0)
+                if (loginUser != null && loginUser.id == 1)
                 {
                     AdminPageWindow adminPageWindow = new AdminPageWindow();
                     adminPageWindow.Show();
