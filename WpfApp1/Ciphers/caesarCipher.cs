@@ -22,28 +22,35 @@ namespace WpfApp1
             var letterQuntity = alphabet.Length; // Длина алфавита
             var result = ""; // Строка результата
 
-            // Проходимся по тексту
-            for (int i = 0; i < minimizedText.Length; i++)
+            try
             {
-                var c = minimizedText[i]; // Получаем символ, на котором сейчас находимся 
-                var index = alphabet.IndexOf(c); // Получаем индекс символа
-
-                if (index < 0) // Если индекс меньше нуля, то добавляем его к результату
+                // Проходимся по тексту
+                for (int i = 0; i < minimizedText.Length; i++)
                 {
-                    result += c.ToString();
-                }
-                else // Если индекс больше нуля то вычисляем codeIndex.
-                {
-                    var codeIndex = (letterQuntity + index + key) % letterQuntity;
+                    var c = minimizedText[i]; // Получаем символ, на котором сейчас находимся 
+                    var index = alphabet.IndexOf(c); // Получаем индекс символа
 
-                    if(codeIndex >= alphabet.Length)
+                    if (index < 0) // Если индекс меньше нуля, то добавляем его к результату
                     {
-                        codeIndex = 0;
+                        result += c.ToString();
                     }
+                    else // Если индекс больше нуля то вычисляем codeIndex.
+                    {
+                        var codeIndex = (letterQuntity + index + key) % letterQuntity;
 
-                    // И добавляем к результату символ алфавита с индексом, который мы вычислили выше.
-                    result += alphabet[codeIndex];
+                        if (codeIndex >= alphabet.Length)
+                        {
+                            codeIndex = 0;
+                        }
+
+                        // И добавляем к результату символ алфавита с индексом, который мы вычислили выше.
+                        result += alphabet[codeIndex];
+                    }
                 }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.CaesarErrorMessageBox(alphabet);
             }
 
             // Возращаем результат
@@ -59,7 +66,20 @@ namespace WpfApp1
         /// <returns></returns>
         public static string Encrypt(string plainMessage, int key, string alphabet)
         {
-            return Encode(plainMessage, key, alphabet);
+            try
+            {
+                if (key > alphabet.Length)
+                {
+                    throw new Exception();
+                }
+
+                return Encode(plainMessage, key, alphabet);
+            }
+            catch (Exception)
+            {
+                MessageBoxes.CaesarErrorMessageBox(alphabet);
+                return "";
+            }
         }
 
         /// <summary>
@@ -71,34 +91,16 @@ namespace WpfApp1
         /// <returns></returns>
         public static string Decrypt(string encryptedMessage, int key, string alphabet)
         {
-            return Encode(encryptedMessage, key, alphabet);
-        }
-
-        public static string caesarCipherEncryptor(string input, int key, string alphabet)
-        {
-            StringBuilder result = new StringBuilder();
-
-            int newKey = key % alphabet.Length;
-
-            foreach(char letter in input)
+            try 
             {
-                result.Append(getNewLetter(letter, newKey, alphabet));
+                return Encode(encryptedMessage, key, alphabet);
             }
-
-            return result.ToString();
-        }
-
-        public static char getNewLetter(char letter, int key, string alphabet)
-        {
-            int newLetterCode = alphabet.IndexOf(letter) + key;
-            return alphabet[newLetterCode % 26];
-        }
-
-
-
-
-
-
-
+            catch (Exception)
+            {
+                MessageBoxes.CaesarErrorMessageBox(alphabet);
+                return "";
+            }
+       }
     }
 }
+

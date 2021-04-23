@@ -13,5 +13,21 @@ namespace WpfApp1
         {
             MessageBox.Show("Неизвестная ошибка", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
         }
+
+        public static void CaesarErrorMessageBox(string alphabet)
+        {
+            string length;
+
+            if(alphabet.Length == 26)
+            {
+                length = "символов";
+            }
+            else
+            {
+                length = "символа";
+            }
+
+            MessageBox.Show($"Выбранный вами алфавит содержит {alphabet.Length} {length}", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
     }
 }

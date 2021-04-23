@@ -181,7 +181,7 @@ namespace WpfApp1
             // В зависимости от выбранного шифра выдаем разный результат
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                        OutputTextBox.Text = caesarCipher.caesarCipherEncryptor(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
@@ -209,12 +209,9 @@ namespace WpfApp1
         private void DecryptButtonClick(object sender, RoutedEventArgs e)
         {
             // В зависимости от выбранного шифра выдаем разный результат
-
-            try
-            {
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = caesarCipher.caesarCipherEncryptor(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
@@ -232,11 +229,6 @@ namespace WpfApp1
                 {
                     OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text, Alphabet);
                 }
-            }
-            catch (Exception)
-            {
-                MessageBoxes.ErrorMessageBox();
-            }
         }
 
         /// <summary>
