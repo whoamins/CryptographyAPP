@@ -61,18 +61,18 @@ namespace WpfApp1
 
                 //UserLogin = loginUser.Login;
 
-                // Если залогинлся админ(т.е. пользователя с id = 0) -> подгрузить пользователю админ панель
+                // Если залогинлся админ(т.е. пользователя с id = 1) -> подгрузить пользователю админ панель
                 if (loginUser != null && loginUser.id == 1)
                 {
                     AdminPageWindow adminPageWindow = new AdminPageWindow();
                     adminPageWindow.Show();
-                    this.Hide();
+                    Hide();
                 }
                 else if (loginUser != null) // Если обычный пользователь, то подгрузить главную страницу
                 {
                     MainContentWindow mainContentWindow = new MainContentWindow();
                     mainContentWindow.Show();
-                    this.Hide();
+                    Hide();
                 }
                 else // Если не получилось залогинется выдаем ошибку
                 {
@@ -96,9 +96,9 @@ namespace WpfApp1
        /// <param name="e"></param>
         private void RegisterWindowButtonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
-            this.Hide();
+            RegisterWindow registerWindow = new RegisterWindow();
+            registerWindow.Show();
+            Hide();
         }
 
         /// <summary>

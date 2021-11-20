@@ -64,7 +64,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -143,9 +143,6 @@
     <Compile Include="Ciphers\binary.cs" />
     <Compile Include="Ciphers\caesarCipher.cs" />
     <Compile Include="Ciphers\vigenere.cs" />
-    <Compile Include="CryptoAnalysisWindow.xaml.cs">
-      <DependentUpon>CryptoAnalysisWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="DialogServices\DragNDropService.cs" />
     <Compile Include="DialogServices\LongWait.cs" />
     <Compile Include="DialogServices\SaveFileService.cs" />
@@ -155,13 +152,10 @@
     <Compile Include="Hashes\SHA1Hash.cs" />
     <Compile Include="Hashes\SHA256Hash.cs" />
     <Compile Include="Hashes\SHA512Hash.cs" />
-    <Compile Include="HashWindow.xaml.cs">
-      <DependentUpon>HashWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MainContentWindow.xaml.cs">
       <DependentUpon>MainContentWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="Models\User.cs" />
     <Compile Include="Utils\EncryptPassword.cs" />
     <Compile Include="Utils\MessageBoxes.cs" />
     <Page Include="AdminPageWindow.xaml">
@@ -172,19 +166,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="CryptoAnalysisWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="HashWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainContentWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="RegisterWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -192,8 +178,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="RegisterWindow.xaml.cs">
+      <DependentUpon>RegisterWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -223,7 +209,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="WpfApp1_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

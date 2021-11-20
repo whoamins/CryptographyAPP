@@ -11,9 +11,6 @@ namespace WpfApp1
     {
         public DbSet<User> Users { get; set; }
 
-        public ApplicationContext() : base("DefaultConnection")
-        {
-
-        }
+        public ApplicationContext() : base("DefaultConnection") { }
     }
 }

@@ -35,63 +35,156 @@
 
         <Grid Height="70">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0">
-                <Button Uid="0" Width="360" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
-                <Button Uid="1" Width="360" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}"  Click="PageButtonClick" />
-                <Button Uid="2" Width="360" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" Click="PageButtonClick" />
+                <Button Uid="0" Width="360" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
+                <Button Uid="1" Width="360" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
+                <Button Uid="2" Width="360" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
             </StackPanel>
             <Grid x:Name="GridCursor" Width="360" Height="5" Background="#FF2196F3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 0 0" />
         </Grid>
-        <!-- Main -->
-            <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
-                <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
-                    <Border.Effect>
-                        <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
-                    </Border.Effect>
-                    <TextBox x:Name="InputTextBox" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
-                </Border>
 
-                <ComboBox x:Name="CipherSelection" materialDesign:HintAssist.Hint="Шифр" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="ComboBox_Selected">
-                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Виженера</TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Height="45" Width="250" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
-                    </ComboBoxItem>
-                </ComboBox>
+        <TabControl>
+            <TabItem Header="Криптография">
+                <TabItem.Content>
+                    <Grid x:Name="GridMainCrypto" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
+                        <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                            </Border.Effect>
+                            <TextBox x:Name="InputTextBoxCrypto" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                        </Border>
 
-                <ComboBox x:Name="LanguageSelection" materialDesign:HintAssist.Hint="Алфавит" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 100" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="LanguageComboBox_Selected">
-                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Русский</TextBlock>
-                    </ComboBoxItem>
-                    <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
-                        <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Английский</TextBlock>
-                    </ComboBoxItem>
-            </ComboBox>
+                        <ComboBox x:Name="CipherSelection" materialDesign:HintAssist.Hint="Шифр" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="ComboBox_Selected">
+                            <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Цезаря</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Шифр Виженера</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Base64</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Binary</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Atbash</TextBlock>
+                            </ComboBoxItem>
+                        </ComboBox>
 
-                <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
-                    <TextBox x:Name="CipherKey" Margin="0 20" materialDesign:HintAssist.Hint="Ключ" Width="250" Foreground="Black" />
-                    <Button Width="250" Content="Зашифровать" Click="EncryptButtonClick" />
-                    <Button Width="250" Content="Расшифровать" Margin="0 20 0 0" Click="DecryptButtonClick" />
-                </StackPanel>
+                        <ComboBox x:Name="LanguageSelection" materialDesign:HintAssist.Hint="Алфавит" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 100" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="LanguageComboBox_Selected">
+                            <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Русский</TextBlock>
+                            </ComboBoxItem>
+                            <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                                <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Английский</TextBlock>
+                            </ComboBoxItem>
+                        </ComboBox>
+
+                        <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
+                            <TextBox x:Name="CipherKey" Margin="0 20" materialDesign:HintAssist.Hint="Ключ" Width="250" Foreground="Black" />
+                            <Button Width="250" Content="Зашифровать" Click="EncryptButtonClick" />
+                            <Button Width="250" Content="Расшифровать" Margin="0 20 0 0" Click="DecryptButtonClick" />
+                        </StackPanel>
 
 
-            <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
-                <Border.Effect>
-                    <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
-                </Border.Effect>
-                <TextBox x:Name="OutputTextBox" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
-            </Border>
-        </Grid>
-           
+                        <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                            <Border.Effect>
+                                <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                            </Border.Effect>
+                            <TextBox x:Name="OutputTextBoxCrypto" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+                        </Border>
+                    </Grid>
+                </TabItem.Content>
+            </TabItem>
+            <TabItem Header="Хэширование">
+                <Grid x:Name="GridMainHash" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
+                    <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                        </Border.Effect>
+                        <TextBox x:Name="InputTextBoxHash" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                    </Border>
+
+                    <ComboBox x:Name="HashSelection" materialDesign:HintAssist.Hint="Хэш" Foreground="Black" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 40" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic">
+                        <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">MD5</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">SHA1</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">SHA256</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">SHA512</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">RIPEMD160</TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
+
+                    <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
+                        <Button Width="250" Content="Захешировать" Click="HashButton" />
+                    </StackPanel>
+
+
+                    <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                        </Border.Effect>
+                        <TextBox x:Name="OutputTextBoxHash" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black"></TextBox>
+                    </Border>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Криптоанализ">
+                <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
+                    <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                        </Border.Effect>
+                        <TextBox x:Name="InputTextBoxAnalysis" MaxLength="2500" Margin="1" TextWrapping="Wrap" FontSize="17px" Foreground="Black" FontFamily="Century Gothic"></TextBox>
+                    </Border>
+
+                    <ComboBox x:Name="AnalysisSelection" materialDesign:HintAssist.Hint="Анализ" Foreground="Black" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0 40" Height="50" Width="260" FontSize="17" FontFamily="Century Gothic" SelectionChanged="SelectedItem">
+                        <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                            <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Частотный анализ</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ по Част. Анализу</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Анализ по длине ключа</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" Foreground="Black">
+                            <TextBlock Padding="0" Focusable="False" HorizontalAlignment="Left" FontSize="17">Перебор ключей</TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
+
+                    <ComboBox x:Name="LanguageSelectionAnalysis" materialDesign:HintAssist.Hint="Алфавит" VerticalAlignment="Top"  HorizontalAlignment="Center" Margin="0 100" Height="50" Width="250" FontSize="17" FontFamily="Century Gothic" Foreground="Black" SelectionChanged="LanguageComboBox_Selected">
+                        <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Русский</TextBlock>
+                        </ComboBoxItem>
+                        <ComboBoxItem Height="45" Width="250" IsSelected="True" Foreground="Black">
+                            <TextBlock Padding="5" Focusable="False" HorizontalAlignment="Left" FontSize="17">Английский</TextBlock>
+                        </ComboBoxItem>
+                    </ComboBox>
+
+                    <StackPanel VerticalAlignment="Bottom" Margin="0 0 0 105">
+                        <TextBox x:Name="KeyLength" Margin="0 20" materialDesign:HintAssist.Hint="Длина ключа" Width="250" Foreground="Black" />
+                        <Button Width="250" Content="Анализ" Click="AnalysisButton" />
+                    </StackPanel>
+
+                    <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Right" VerticalAlignment="Center" Padding="15" MaxWidth="550" CornerRadius="10" Height="270">
+                        <Border.Effect>
+                            <DropShadowEffect BlurRadius="15" Color="LightGray" ShadowDepth="0" />
+                        </Border.Effect>
+                        <TextBox x:Name="OutputTextBoxAnalysis" Margin="1" IsReadOnly="True" FontSize="17px" TextWrapping="Wrap" FontFamily="Century Gothic" Foreground="Black" VerticalContentAlignment="Stretch"></TextBox>
+                    </Border>
+
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </StackPanel>   
 

@@ -65,47 +65,6 @@ namespace WpfApp1
         }
 
         /// <summary>
-        /// Переход между страницами
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void PageButtonClick(object sender, RoutedEventArgs e)  
-        {
-            try
-            {
-                // Получаем индекс окна
-                int index = int.Parse(((Button)e.Source).Uid);
-
-
-                // Переход между окнами
-                switch (index)
-                {
-                    case 0:
-                        var mainWindow = new MainContentWindow();
-                        mainWindow.Show();
-                        this.Close();
-                        break;
-                    case 1:
-                        var hashWindow = new HashWindow();
-                        hashWindow.Show();
-                        this.Close();
-                        break;
-                    case 2:
-                        var analysisWindow = new CryptoAnalysisWindow();
-                        analysisWindow.Show();
-                        this.Close();
-                        break;
-                    case 3:
-                        break;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBoxes.ErrorMessageBox();
-            }
-        }
-
-        /// <summary>
         /// Обработчик выбранного шифра
         /// </summary>
         /// <param name="sender"></param>
@@ -147,6 +106,47 @@ namespace WpfApp1
             }
         }
 
+
+        /// <summary>
+        /// Обработчик выбранного элемента
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SelectedItem(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                if (KeyLength != null)
+                {
+                    if (AnalysisSelection.SelectedIndex == 0)
+                    {
+                        KeyLength.IsEnabled = false;
+                        LanguageSelection.IsEnabled = false;
+                    }
+                }
+                if (AnalysisSelection.SelectedIndex == 1)
+                {
+                    KeyLength.IsEnabled = false;
+                    LanguageSelection.IsEnabled = false;
+                }
+                if (AnalysisSelection.SelectedIndex == 2)
+                {
+                    KeyLength.IsEnabled = true;
+                    LanguageSelection.IsEnabled = false;
+                }
+                if (AnalysisSelection.SelectedIndex == 3)
+                {
+                    KeyLength.IsEnabled = false;
+                    LanguageSelection.IsEnabled = true;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+
+            }
+        }
+
         /// <summary>
         /// Обработчик выбранного языка алфавита
         /// </summary>
@@ -181,23 +181,23 @@ namespace WpfApp1
             // В зависимости от выбранного шифра выдаем разный результат
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = caesarCipher.Encrypt(InputTextBox.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBoxCrypto.Text = caesarCipher.Encrypt(InputTextBoxCrypto.Text, Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
-                    OutputTextBox.Text = vigenere.Encrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = vigenere.Encrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 2)
                 {
-                    OutputTextBox.Text = base64.Base64Encrypt(InputTextBox.Text);
+                    OutputTextBoxCrypto.Text = base64.Base64Encrypt(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 3)
                 {
-                    OutputTextBox.Text = binary.Encode(InputTextBox.Text);
+                    OutputTextBoxCrypto.Text = binary.Encode(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 4)
                 {
-                    OutputTextBox.Text = atbash.Encrypt(InputTextBox.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = atbash.Encrypt(InputTextBoxCrypto.Text, Alphabet);
                 }
         }
 
@@ -211,24 +211,105 @@ namespace WpfApp1
             // В зависимости от выбранного шифра выдаем разный результат
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBox.Text = caesarCipher.Decrypt(InputTextBox.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBoxCrypto.Text = caesarCipher.Decrypt(InputTextBoxCrypto.Text, -Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
-                    OutputTextBox.Text = vigenere.Decrypt(InputTextBox.Text, CipherKey.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = vigenere.Decrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 2)
                 {
-                    OutputTextBox.Text = base64.Base64Decrypt(InputTextBox.Text);
+                    OutputTextBoxCrypto.Text = base64.Base64Decrypt(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 3)
                 {
-                    OutputTextBox.Text = binary.Decode(InputTextBox.Text);
+                    OutputTextBoxCrypto.Text = binary.Decode(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 4)
                 {
-                    OutputTextBox.Text = atbash.Decrypt(InputTextBox.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = atbash.Decrypt(InputTextBoxCrypto.Text, Alphabet);
                 }
+        }
+
+
+
+        /// <summary>
+        /// Обработчик нажатия кнопки хеширования
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HashButton(object sender, RoutedEventArgs e)
+        {
+            // В зависимости от выбранного хэш-алгоритма выдаем разный результат
+
+            try
+            {
+                if (HashSelection.SelectedIndex == 0)
+                {
+                    OutputTextBoxHash.Text = MD5Hash.GetHash(InputTextBoxHash.Text);
+                }
+                if (HashSelection.SelectedIndex == 1)
+                {
+                    OutputTextBoxHash.Text = SHA1Hash.GetHash(InputTextBoxHash.Text);
+                }
+                if (HashSelection.SelectedIndex == 2)
+                {
+                    OutputTextBoxHash.Text = SHA256Hash.GetHash(InputTextBoxHash.Text);
+                }
+                if (HashSelection.SelectedIndex == 3)
+                {
+                    OutputTextBoxHash.Text = SHA512Hash.GetHash(InputTextBoxHash.Text);
+                }
+                if (HashSelection.SelectedIndex == 4)
+                {
+                    OutputTextBoxHash.Text = RIPEMD160Hash.GetHash(InputTextBoxHash.Text);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
+        }
+
+        /// <summary>
+        /// Обработчик нажатия кнопки анализа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AnalysisButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                // В зависимости от выбранного анализа выдаем разный результат
+
+                if (AnalysisSelection.SelectedIndex == 0)
+                {
+                    OutputTextBoxAnalysis.Text = FrequencyAnalysis.Analysis(InputTextBoxAnalysis.Text, OutputTextBoxAnalysis.Text);
+                }
+                if (AnalysisSelection.SelectedIndex == 1)
+                {
+                    OutputTextBoxAnalysis.Text = FrequencyAnalysisDecrypt.Decrypt(InputTextBoxAnalysis.Text);
+                }
+                if (AnalysisSelection.SelectedIndex == 2)
+                {
+                    if (LongWait.LongWaitResponseInMessageBox(OutputTextBoxAnalysis.Text))
+                    {
+                        OutputTextBoxAnalysis.Text = BruteForce.BruteWithKeyLength(InputTextBoxAnalysis.Text, KeyLength.Text);
+                    }
+                    else
+                    {
+
+                    }
+                }
+                if (AnalysisSelection.SelectedIndex == 3)
+                {
+                    OutputTextBoxAnalysis.Text = CaesarCipher.Crack(InputTextBoxAnalysis.Text, Alphabet);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBoxes.ErrorMessageBox();
+            }
         }
 
         /// <summary>
@@ -240,7 +321,7 @@ namespace WpfApp1
         {
             try
             {
-                UploadFileService.UploadFile(InputTextBox);
+                UploadFileService.UploadFile(InputTextBoxCrypto);
             }
             catch (Exception)
             {
@@ -257,7 +338,7 @@ namespace WpfApp1
         {
             try
             {
-                DragNDropService.DragAndDrop(e, InputTextBox);
+                DragNDropService.DragAndDrop(e, InputTextBoxCrypto);
             }
             catch (Exception)
             {
@@ -274,7 +355,7 @@ namespace WpfApp1
         {
             try
             {
-                SaveFileService.SaveFile(OutputTextBox);
+                SaveFileService.SaveFile(OutputTextBoxCrypto);
             }
             catch (Exception)
             {

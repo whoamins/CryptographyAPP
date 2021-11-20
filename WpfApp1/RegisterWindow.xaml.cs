@@ -9,21 +9,19 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace WpfApp1
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для RegisterWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class RegisterWindow : Window
     {
         // Объявление базы данных
         ApplicationContext db;
 
-        public MainWindow()
+        public RegisterWindow()
         {
             InitializeComponent();
 
@@ -83,6 +81,12 @@ namespace WpfApp1
 
             // Сохраняем базу данных
             db.SaveChanges();
+
+            /*
+             * 
+             * ArgumentException: The member with identity 'id' does not exist in the metadata collection.
+             *  Имя параметра: identity
+            */
 
             #endregion
 
