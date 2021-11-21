@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace WpfApp1
 {
-    public class base64
+    public class Base64
     {
         /// <summary>
         /// Зашифровывает в base64

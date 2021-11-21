@@ -52,11 +52,11 @@ namespace WpfApp1
                     while ((word = sr.ReadLine()) != null)
                     {
                         progress += 1;
-                        if (isAllLetters(word))
+                        if (IsAllLetters(word))
                         {
                             if (word.Length == keylength)
                             {
-                                attempt = decipherVeginere(value, word);
+                                attempt = DecipherVeginere(value, word);
                                 if (dictionary.Any(attempt.Contains))
                                 {
                                     counter += 1;
@@ -77,7 +77,7 @@ namespace WpfApp1
 
                 foreach (var item in countRefs.OrderByDescending(r => r.Value).Take(10))
                 {
-                    res.AppendLine(string.Format("KEY {0}, {1}", item.Key, decipherVeginere(value, item.Key), item.Value));
+                    res.AppendLine(string.Format("KEY {0}, {1}", item.Key, DecipherVeginere(value, item.Key), item.Value));
                 }
 
                 return res.ToString();
@@ -89,7 +89,7 @@ namespace WpfApp1
 
             return input;
         }
-        public static bool isAllLetters(string s)
+        public static bool IsAllLetters(string s)
 		{
 			foreach (char c in s)
 			{
@@ -98,7 +98,7 @@ namespace WpfApp1
 			}
 			return true;
 		}
-		static string decipherVeginere(string text, string key)
+        static string DecipherVeginere(string text, string key)
 		{
 			StringBuilder result = new StringBuilder();
 			int keyLength = key.Length;

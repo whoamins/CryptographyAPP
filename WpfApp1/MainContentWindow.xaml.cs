@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using WpfApp1.DialogServices;
+using WpfApp1.Utils;
 
 namespace WpfApp1
 {
@@ -34,9 +24,9 @@ namespace WpfApp1
             CipherSelection.SelectedIndex = -1;
             LanguageSelection.SelectedIndex = -1;
 
-            if(AuthWindow.UserLogin == "admin")
+            if(CredentialsRequirements.IsAdmin(AuthWindow.LoggedUser))
             {
-                AdminPanelButton.IsEnabled = true;
+                AuthWindow.LoggedUser.Login = "qwe";
             }
         }
 
@@ -181,23 +171,23 @@ namespace WpfApp1
             // В зависимости от выбранного шифра выдаем разный результат
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBoxCrypto.Text = caesarCipher.Encrypt(InputTextBoxCrypto.Text, Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBoxCrypto.Text = CaesarCipher.Encrypt(InputTextBoxCrypto.Text, Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
-                    OutputTextBoxCrypto.Text = vigenere.Encrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = Vigenere.Encrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 2)
                 {
-                    OutputTextBoxCrypto.Text = base64.Base64Encrypt(InputTextBoxCrypto.Text);
+                    OutputTextBoxCrypto.Text = Base64.Base64Encrypt(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 3)
                 {
-                    OutputTextBoxCrypto.Text = binary.Encode(InputTextBoxCrypto.Text);
+                    OutputTextBoxCrypto.Text = Binary.Encode(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 4)
                 {
-                    OutputTextBoxCrypto.Text = atbash.Encrypt(InputTextBoxCrypto.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = new Atbash().Encrypt(InputTextBoxCrypto.Text, Alphabet);
                 }
         }
 
@@ -211,23 +201,23 @@ namespace WpfApp1
             // В зависимости от выбранного шифра выдаем разный результат
                 if (CipherSelection.SelectedIndex == 0)
                 {
-                    OutputTextBoxCrypto.Text = caesarCipher.Decrypt(InputTextBoxCrypto.Text, -Int32.Parse(CipherKey.Text), Alphabet);
+                    OutputTextBoxCrypto.Text = CaesarCipher.Decrypt(InputTextBoxCrypto.Text, -Int32.Parse(CipherKey.Text), Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 1)
                 {
-                    OutputTextBoxCrypto.Text = vigenere.Decrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = Vigenere.Decrypt(InputTextBoxCrypto.Text, CipherKey.Text, Alphabet);
                 }
                 if (CipherSelection.SelectedIndex == 2)
                 {
-                    OutputTextBoxCrypto.Text = base64.Base64Decrypt(InputTextBoxCrypto.Text);
+                    OutputTextBoxCrypto.Text = Base64.Base64Decrypt(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 3)
                 {
-                    OutputTextBoxCrypto.Text = binary.Decode(InputTextBoxCrypto.Text);
+                    OutputTextBoxCrypto.Text = Binary.Decode(InputTextBoxCrypto.Text);
                 }
                 if (CipherSelection.SelectedIndex == 4)
                 {
-                    OutputTextBoxCrypto.Text = atbash.Decrypt(InputTextBoxCrypto.Text, Alphabet);
+                    OutputTextBoxCrypto.Text = new Atbash().Decrypt(InputTextBoxCrypto.Text, Alphabet);
                 }
         }
 
@@ -246,23 +236,23 @@ namespace WpfApp1
             {
                 if (HashSelection.SelectedIndex == 0)
                 {
-                    OutputTextBoxHash.Text = MD5Hash.GetHash(InputTextBoxHash.Text);
+                    OutputTextBoxHash.Text = new MD5Hash().GetHash(InputTextBoxHash.Text);
                 }
                 if (HashSelection.SelectedIndex == 1)
                 {
-                    OutputTextBoxHash.Text = SHA1Hash.GetHash(InputTextBoxHash.Text);
+                    OutputTextBoxHash.Text = new SHA1Hash().GetHash(InputTextBoxHash.Text);
                 }
                 if (HashSelection.SelectedIndex == 2)
                 {
-                    OutputTextBoxHash.Text = SHA256Hash.GetHash(InputTextBoxHash.Text);
+                    OutputTextBoxHash.Text = new SHA256Hash().GetHash(InputTextBoxHash.Text);
                 }
                 if (HashSelection.SelectedIndex == 3)
                 {
-                    OutputTextBoxHash.Text = SHA512Hash.GetHash(InputTextBoxHash.Text);
+                    OutputTextBoxHash.Text = new SHA512Hash().GetHash(InputTextBoxHash.Text);
                 }
                 if (HashSelection.SelectedIndex == 4)
                 {
-                    OutputTextBoxHash.Text = RIPEMD160Hash.GetHash(InputTextBoxHash.Text);
+                    OutputTextBoxHash.Text = new RIPEMD160Hash().GetHash(InputTextBoxHash.Text);
                 }
             }
             catch (Exception)
@@ -303,7 +293,7 @@ namespace WpfApp1
                 }
                 if (AnalysisSelection.SelectedIndex == 3)
                 {
-                    OutputTextBoxAnalysis.Text = CaesarCipher.Crack(InputTextBoxAnalysis.Text, Alphabet);
+                    OutputTextBoxAnalysis.Text = CaesarCipherAnalysis.Crack(InputTextBoxAnalysis.Text, Alphabet);
                 }
             }
             catch (Exception)

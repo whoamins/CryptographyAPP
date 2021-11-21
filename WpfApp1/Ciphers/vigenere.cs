@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class vigenere
+    public class Vigenere
     {
         /// <summary>
         /// Зашифровывает в шифр Виженера

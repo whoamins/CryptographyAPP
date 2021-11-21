@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace WpfApp1
 {
-    public class caesarCipher
+    public class CaesarCipher
     {
         /// <summary>
         /// Алгоритм шифра Цезаря

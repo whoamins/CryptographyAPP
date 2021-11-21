@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.Utils;
 
 namespace WpfApp1
 {
@@ -19,14 +20,13 @@ namespace WpfApp1
     /// </summary>
     public partial class AuthWindow : Window
     {
-        public static string UserLogin;
+        public static User LoggedUser { get; private set; }
+
         public AuthWindow()
         {
             InitializeComponent();
 
-            // Для функции "Запомнить меня".
-            // Проверка, не пустые ли значения из настроек.
-            // Если не пустые, то подгружаем их и устанавливаем их.
+            // For remember me feauture
             if (Properties.Settings.Default.username != string.Empty)
             {
                 textBoxLogin.Text = Properties.Settings.Default.username;
@@ -41,47 +41,42 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void LoginButtonClick(object sender, RoutedEventArgs e)
         {
-            // Получаем логин, обрезая пробелы в конце и в начале
             string login = textBoxLogin.Text.Trim();
-
-            // Хешируем пароль, что бы сравнить с захешированным в базе данных. Так же обрезаем пробелы.
             string password = EncryptPassword.Encrypt(passwordBoxLogin.Password).Trim();
 
-            // Проверка, не пустые ли логин и пароль
             if (login != "" && password != "")
             {
-                User loginUser = null;
+                User loginUser;
 
-                // Using - автоматически вызывает Dispose() в конце блока
                 using (ApplicationContext db = new ApplicationContext())
                 {
-                    // Ищем пользователя с веденным логином и паролем в базе данных
                     loginUser = db.Users.Where(x => x.Login == login && x.Password == password).FirstOrDefault();
+                    LoggedUser = loginUser;
                 }
 
-                //UserLogin = loginUser.Login;
 
-                // Если залогинлся админ(т.е. пользователя с id = 1) -> подгрузить пользователю админ панель
-                if (loginUser != null && loginUser.id == 1)
+                if (loginUser != null)
                 {
-                    AdminPageWindow adminPageWindow = new AdminPageWindow();
-                    adminPageWindow.Show();
-                    Hide();
+                    if (CredentialsRequirements.IsAdmin(loginUser))
+                    {
+                        AdminPageWindow adminPageWindow = new AdminPageWindow();
+                        adminPageWindow.Show();
+                        Hide();
+                    }
+                    else
+                    {
+                        MainContentWindow mainContentWindow = new MainContentWindow();
+                        mainContentWindow.Show();
+                        Hide();
+                    }
                 }
-                else if (loginUser != null) // Если обычный пользователь, то подгрузить главную страницу
+                else
                 {
-                    MainContentWindow mainContentWindow = new MainContentWindow();
-                    mainContentWindow.Show();
-                    Hide();
-                }
-                else // Если не получилось залогинется выдаем ошибку
-                {
-                    MessageBox.Show("Что-то не так!");
+                    MessageBox.Show("oOoOoOPs! Try Again!", "Try Again!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
             
-            // Если поставлена галочка на функцию "Запомнить меня", то сохраняем данные аккаунта. 
-            if(RememberMe.IsChecked == true)
+            if((bool)RememberMe.IsChecked)
             {
                 Properties.Settings.Default.username = textBoxLogin.Text;
                 Properties.Settings.Default.password = passwordBoxLogin.Password;
@@ -110,7 +105,7 @@ namespace WpfApp1
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
         }
     }

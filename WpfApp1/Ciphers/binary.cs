@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace WpfApp1
 {
-    public class binary
+    public class Binary
     {
         /// <summary>
         /// Зашифровывает в бинарный код

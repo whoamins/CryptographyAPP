@@ -33,17 +33,20 @@
             <TextBlock x:Name="Welcome" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFA2A2A2" FontSize="16"/>
         </Grid>
 
-        <Grid Height="70">
+        <!-- <Grid Height="70">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" Margin="0">
                 <Button Uid="0" Width="360" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
                 <Button Uid="1" Width="360" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
                 <Button Uid="2" Width="360" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Command="{Binding LoadSecondUCCommand, Mode=OneTime}" />
             </StackPanel>
             <Grid x:Name="GridCursor" Width="360" Height="5" Background="#FF2196F3" VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="0 0 0 0" />
-        </Grid>
-
+        </Grid> -->
+        
         <TabControl>
-            <TabItem Header="Криптография">
+            <TabItem>
+                <TabItem.Header>
+                    <Label FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Uid="0" Width="360" Content="Криптография" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" /> 
+                </TabItem.Header>
                 <TabItem.Content>
                     <Grid x:Name="GridMainCrypto" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
                         <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
@@ -96,7 +99,10 @@
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Header="Хэширование">
+            <TabItem>
+                <TabItem.Header>
+                    <Label FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Uid="1" Width="360" Content="Хэширование" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
+                </TabItem.Header>
                 <Grid x:Name="GridMainHash" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
                     <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
                         <Border.Effect>
@@ -137,7 +143,10 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="Криптоанализ">
+            <TabItem>
+                <TabItem.Header>
+                    <Label FontSize="20" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Uid="2" Width="360" Content="Криптоанализ" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" />
+                </TabItem.Header>
                 <Grid x:Name="GridMain" Height="460" Background="AntiqueWhite" Uid="0" Visibility="Visible" AllowDrop="True" Drop="DragAndDrop">
                     <Border MinWidth="350" Width="350" Margin="50" Background="White" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="15" CornerRadius="10" Height="270">
                         <Border.Effect>

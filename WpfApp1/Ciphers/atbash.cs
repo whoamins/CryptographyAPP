@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using WpfApp1.Interfaces.Ciphers;
 
 namespace WpfApp1
 {
-    public class atbash
+    public class Atbash : ICipher
     {
         //метод для переворачивания строки
         private static string Reverse(string inputText)
@@ -23,7 +19,7 @@ namespace WpfApp1
         }
 
         //метод шифрования/дешифрования
-        public static string EncryptDecrypt(string text, string symbols, string cipher)
+        private static string EncryptDecrypt(string text, string symbols, string cipher)
         {
             //переводим текст в нижний регистр
             text = text.ToLower();
@@ -44,13 +40,13 @@ namespace WpfApp1
         }
 
         //шифрование текста
-        public static string Encrypt(string plainText, string alphabet)
+        public string Encrypt(string plainText, string alphabet)
         {
             return EncryptDecrypt(plainText, alphabet, Reverse(alphabet));
         }
 
         //расшифровка текста
-        public static string Decrypt(string encryptedText, string alphabet)
+        public string Decrypt(string encryptedText, string alphabet)
         {
             return EncryptDecrypt(encryptedText, Reverse(alphabet), alphabet);
         }

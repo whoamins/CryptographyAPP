@@ -40,10 +40,12 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\x64\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -65,6 +67,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>
+    </StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -138,15 +144,17 @@
     <Compile Include="AuthWindow.xaml.cs">
       <DependentUpon>AuthWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ciphers\atbash.cs" />
-    <Compile Include="Ciphers\base64.cs" />
-    <Compile Include="Ciphers\binary.cs" />
-    <Compile Include="Ciphers\caesarCipher.cs" />
-    <Compile Include="Ciphers\vigenere.cs" />
+    <Compile Include="Ciphers\Atbash.cs" />
+    <Compile Include="Ciphers\Base64.cs" />
+    <Compile Include="Ciphers\Binary.cs" />
+    <Compile Include="Ciphers\CaesarCipher.cs" />
+    <Compile Include="Ciphers\Vigenere.cs" />
     <Compile Include="DialogServices\DragNDropService.cs" />
     <Compile Include="DialogServices\LongWait.cs" />
     <Compile Include="DialogServices\SaveFileService.cs" />
     <Compile Include="DialogServices\UploadFileService.cs" />
+    <Compile Include="Interfaces\ICipher.cs" />
+    <Compile Include="Interfaces\IHash.cs" />
     <Compile Include="Hashes\MD5Hash.cs" />
     <Compile Include="Hashes\RIPEMD160Hash.cs" />
     <Compile Include="Hashes\SHA1Hash.cs" />
@@ -156,7 +164,9 @@
       <DependentUpon>MainContentWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs" />
+    <Compile Include="Utils\CredentialsRequirements.cs" />
     <Compile Include="Utils\EncryptPassword.cs" />
+    <Compile Include="Utils\InvalidData.cs" />
     <Compile Include="Utils\MessageBoxes.cs" />
     <Page Include="AdminPageWindow.xaml">
       <SubType>Designer</SubType>

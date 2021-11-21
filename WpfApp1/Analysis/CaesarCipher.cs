@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WpfApp1
 {
-    public class CaesarCipher
+    public class CaesarCipherAnalysis
     {
         /// <summary>
         /// Перебирает ключ для шифра Цезаря
@@ -22,7 +22,7 @@ namespace WpfApp1
             for(int key = 0; key <= alphabet.Length; key++)
             {
                 // Добавляем в результат строку "Ключ - {ключ} - {расшифрованный текст с данным ключом}"
-                sb.AppendLine(string.Format($"Ключ - {key} - {caesarCipher.Decrypt(input, -key, alphabet)}"));
+                sb.AppendLine(string.Format($"Ключ - {key} - {CaesarCipher.Decrypt(input, -key, alphabet)}"));
             }
 
             // Возвращаем строку

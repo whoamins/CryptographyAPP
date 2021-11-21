@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using WpfApp1.Utils;
 
 namespace WpfApp1
 {
@@ -18,7 +10,6 @@ namespace WpfApp1
     /// </summary>
     public partial class RegisterWindow : Window
     {
-        // Объявление базы данных
         ApplicationContext db;
 
         public RegisterWindow()
@@ -35,29 +26,38 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void RegisterButtonClick(object sender, RoutedEventArgs e)
         {
+            #region Data From TextBox
+
             string login = textBoxLogin.Text.Trim();
             string password = passwordBoxLogin.Password.Trim();
             string repeatPassword = RepeatPasswordBoxLogin.Password.Trim();
             string email = textBoxEmail.Text.Trim().ToLower();
 
-            // Проверка введеных значений
-            if (login.Length < 3)
+            #endregion
+
+            #region Credentials Requirements
+
+            if (!CredentialsRequirements.LoginLength(login))
             {
-                MarkInvalid(textBoxLogin);
+                InvalidData.MarkInvalid(textBoxLogin);
             }
-            else if (password.Length < 8)
+            
+            if (!CredentialsRequirements.PasswordLength(password))
             {
-                MarkInvalid(passwordBoxLogin);
+                InvalidData.MarkInvalid(passwordBoxLogin);
             }
-            else if (password != repeatPassword)
+
+            if (password != repeatPassword)
             {
-                MarkInvalid(passwordBoxLogin);
-                MarkInvalid(RepeatPasswordBoxLogin);
+                InvalidData.MarkInvalid(passwordBoxLogin);
+                InvalidData.MarkInvalid(RepeatPasswordBoxLogin);
             }
-            else if (email.Length < 5 || !email.Contains("@") || !email.Contains("."))
+
+            if (!CredentialsRequirements.EmailFormat(email))
             {
-                MarkInvalid(textBoxEmail);
+                InvalidData.MarkInvalid(textBoxEmail);
             }
+
             else
             {
                 textBoxLogin.ToolTip = "";
@@ -69,46 +69,26 @@ namespace WpfApp1
                 textBoxEmail.ToolTip = "";
                 textBoxEmail.Background = Brushes.Transparent;
 
-                MessageBox.Show("Все ок!");
+                // MessageBox.Show("Все ок!");
             }
-
-            #region Регистрация 
-            // Создание нового пользователя с login, email, password полученным из textbox
-            User user = new User(login, email, EncryptPassword.Encrypt(password));
-
-            // Добавляем нового пользователя в базу данных
-            db.Users.Add(user);
-
-            // Сохраняем базу данных
-            db.SaveChanges();
-
-            /*
-             * 
-             * ArgumentException: The member with identity 'id' does not exist in the metadata collection.
-             *  Имя параметра: identity
-            */
 
             #endregion
 
-            #region Редирект
+            #region Registration 
+            User user = new User(login, email, EncryptPassword.Encrypt(password));
 
-            // Перенаправление на форму входа
+            db.Users.Add(user);
+            db.SaveChanges();
+
+            #endregion
+
+            #region Redirect
 
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
-            this.Hide();
+            Hide();
 
             #endregion
-        }
-
-        /// <summary>
-        /// Отображение ошибки в поле
-        /// </summary>
-        /// <param name="control"></param>
-        public void MarkInvalid(Control control)
-        {
-            control.ToolTip = "Поле введено не корректно!";
-            control.Background = Brushes.Red;
         }
 
         /// <summary>
@@ -121,14 +101,14 @@ namespace WpfApp1
         {
             AuthWindow authWindow = new AuthWindow();
             authWindow.Show();
-            this.Hide();
+            Hide();
         }
 
         private void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
         }
     }

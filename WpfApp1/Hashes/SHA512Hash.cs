@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Security.Cryptography;
+using WpfApp1.Interface.Hashes;
 
 
 namespace WpfApp1
 {
-    public class SHA512Hash
+    public class SHA512Hash : IHash
     {
         /// <summary>
         /// Получаем SHA512 хеш
         /// </summary>
         /// <param name="input">Сообщения, которые нужны для хешировани</param>
         /// <returns></returns>
-        public static string GetHash(string input)
+        public string GetHash(string input)
         {
             // Создаем экземпляр
             SHA512 sha512Hash = new SHA512Managed();
