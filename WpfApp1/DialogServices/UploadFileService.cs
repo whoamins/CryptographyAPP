@@ -14,25 +14,23 @@ namespace WpfApp1.DialogServices
     {
         public static void UploadFile(TextBox InputTextBox)
         {
-            OpenFileDialog uploadedFile = new OpenFileDialog(); // Создаем экземпляр класса
-            uploadedFile.ShowDialog(); // Показываем диалоговое окно
+            OpenFileDialog uploadedFile = new OpenFileDialog();
+            uploadedFile.ShowDialog();
 
-            // Если файл не равен "", т.е. загружен
             if(uploadedFile.FileName != "") 
             {
-                // Пробуем прочитать все строки
                 try
                 {
                     StreamReader streamFile = new StreamReader(uploadedFile.FileName);
 
                     InputTextBox.Text = streamFile.ReadToEnd();
                 }
-                catch (Exception) // Если не получилось открыть файл, выдаем ошибку
+                catch (Exception)
                 {
                     MessageBox.Show("Не получилось открыть файл!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
-            else // Если файл не загружен выдаем ошибку
+            else
             {
                 MessageBox.Show("Файл не выбран!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }

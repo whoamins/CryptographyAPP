@@ -40,22 +40,26 @@ namespace WpfApp1
             if (!CredentialsRequirements.LoginLength(login))
             {
                 InvalidData.MarkInvalid(textBoxLogin);
+                return;
             }
             
             if (!CredentialsRequirements.PasswordLength(password))
             {
                 InvalidData.MarkInvalid(passwordBoxLogin);
+                return;
             }
 
             if (password != repeatPassword)
             {
                 InvalidData.MarkInvalid(passwordBoxLogin);
                 InvalidData.MarkInvalid(RepeatPasswordBoxLogin);
+                return;
             }
 
             if (!CredentialsRequirements.EmailFormat(email))
             {
                 InvalidData.MarkInvalid(textBoxEmail);
+                return;
             }
 
             else

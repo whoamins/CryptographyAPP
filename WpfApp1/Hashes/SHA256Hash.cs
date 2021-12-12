@@ -14,13 +14,11 @@ namespace WpfApp1
 
             StringBuilder builder = new StringBuilder();
 
-            // Заполняем builder
             for (int i = 0; i < bytes.Length; i++)
             {
                 builder.Append(bytes[i].ToString("x2"));
             }
 
-            // Возращаем builder в строковом формате
             return builder.ToString();
         }
     }

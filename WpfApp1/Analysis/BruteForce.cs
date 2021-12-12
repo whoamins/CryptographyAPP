@@ -17,10 +17,8 @@ namespace WpfApp1
             try
             {
                 StringBuilder sb = new StringBuilder();
-                string dict = @"dict.txt"; // Ищем в файлах программы словарь dict.txt
-                List<string> dictionary = new List<string>(); // Создаем список
-
-                // Создаем словарь
+                string dict = @"dict.txt"; 
+                List<string> dictionary = new List<string>();
                 Dictionary<string, int> countRefs = new Dictionary<string, int> { };
 
 
@@ -31,7 +29,6 @@ namespace WpfApp1
                 int keylength = Int32.Parse(keyLength);
                 int limiter = 2;
 
-                // Открыв словарь - заполняем его
                 using (StreamReader sr = File.OpenText(dict))
                 {
                     string wordpre = "";
@@ -43,12 +40,10 @@ namespace WpfApp1
                     }
                 }
 
-                // Открываем словарь
                 using (StreamReader sr = File.OpenText(dict))
                 {
                     string word = "";
 
-                    // Пока текст не пустой
                     while ((word = sr.ReadLine()) != null)
                     {
                         progress += 1;
@@ -66,7 +61,6 @@ namespace WpfApp1
                                 }
                             }
                         }
-                        // ("\r>{0:n}%", (100 / total) * progress);
                     }
                 }
                 StringBuilder res = new StringBuilder();
@@ -112,7 +106,7 @@ namespace WpfApp1
                 try
                 {
                     diff = text[i] - key[i % keyLength];
-                    //diff should never be more than 25 or less than -25
+
                     if (diff < 0)
                         diff += 26;
 

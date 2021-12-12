@@ -20,7 +20,7 @@ namespace WpfApp1.Utils
 
         public static bool EmailFormat(string email)
         {
-            return email.Length > 5 || email.Contains("@") || email.Contains(".");
+            return email.Length > 5 && email.Contains("@") && email.Contains(".");
         }
 
         public static bool IsAdmin(User user)

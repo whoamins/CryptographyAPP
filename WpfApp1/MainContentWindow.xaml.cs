@@ -39,7 +39,7 @@ namespace WpfApp1
         {
             AdminPageWindow admin = new AdminPageWindow();
             admin.Show();
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace WpfApp1
         {
             AuthWindow auth = new AuthWindow();
             auth.Show();
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -64,35 +64,16 @@ namespace WpfApp1
             // Проверка выбранного элемента в реальном времени, что бы блокировать
             // ввод ключа, в зависимости от выбранного шифры 
 
-            try
+            if (CipherKey != null)
             {
-                if (CipherKey != null)
-                {
-                    if (CipherSelection.SelectedIndex == 0)
-                    {
-                        CipherKey.IsEnabled = true;
-                    }
-                }
-                if (CipherSelection.SelectedIndex == 1)
+                if (CipherSelection.SelectedIndex < 2)
                 {
                     CipherKey.IsEnabled = true;
                 }
-                if (CipherSelection.SelectedIndex == 2)
+                else
                 {
                     CipherKey.IsEnabled = false;
                 }
-                if (CipherSelection.SelectedIndex == 3)
-                {
-                    CipherKey.IsEnabled = false;
-                }
-                if (CipherSelection.SelectedIndex == 4)
-                {
-                    CipherKey.IsEnabled = false;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBoxes.ErrorMessageBox();
             }
         }
 
@@ -104,36 +85,18 @@ namespace WpfApp1
         /// <param name="e"></param>
         private void SelectedItem(object sender, SelectionChangedEventArgs e)
         {
-            try
+            if (KeyLength != null)
             {
-                if (KeyLength != null)
-                {
-                    if (AnalysisSelection.SelectedIndex == 0)
-                    {
-                        KeyLength.IsEnabled = false;
-                        LanguageSelection.IsEnabled = false;
-                    }
-                }
-                if (AnalysisSelection.SelectedIndex == 1)
-                {
-                    KeyLength.IsEnabled = false;
-                    LanguageSelection.IsEnabled = false;
-                }
                 if (AnalysisSelection.SelectedIndex == 2)
                 {
                     KeyLength.IsEnabled = true;
                     LanguageSelection.IsEnabled = false;
                 }
-                if (AnalysisSelection.SelectedIndex == 3)
+                else
                 {
                     KeyLength.IsEnabled = false;
-                    LanguageSelection.IsEnabled = true;
+                    LanguageSelection.IsEnabled = false;
                 }
-            }
-            catch (Exception)
-            {
-                MessageBoxes.ErrorMessageBox();
-
             }
         }
 
@@ -286,10 +249,6 @@ namespace WpfApp1
                     {
                         OutputTextBoxAnalysis.Text = BruteForce.BruteWithKeyLength(InputTextBoxAnalysis.Text, KeyLength.Text);
                     }
-                    else
-                    {
-
-                    }
                 }
                 if (AnalysisSelection.SelectedIndex == 3)
                 {
@@ -362,7 +321,7 @@ namespace WpfApp1
         {
             if(e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
         }
 

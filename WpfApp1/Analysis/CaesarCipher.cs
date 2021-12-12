@@ -18,14 +18,11 @@ namespace WpfApp1
         {
             StringBuilder sb = new StringBuilder();
 
-            // Проходимся по всему алфавиту
             for(int key = 0; key <= alphabet.Length; key++)
             {
-                // Добавляем в результат строку "Ключ - {ключ} - {расшифрованный текст с данным ключом}"
                 sb.AppendLine(string.Format($"Ключ - {key} - {CaesarCipher.Decrypt(input, -key, alphabet)}"));
             }
 
-            // Возвращаем строку
             return sb.ToString();
         }
     }

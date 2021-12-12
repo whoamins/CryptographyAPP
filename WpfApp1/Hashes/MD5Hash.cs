@@ -20,7 +20,6 @@ namespace WpfApp1
                 sb.Append(b.ToString("x2"));
             }
             
-            // Возвращаем результат
             return sb.ToString();
         }
     }

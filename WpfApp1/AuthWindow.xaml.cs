@@ -26,7 +26,7 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            // For remember me feauture
+            // For "remember me" feauture
             if (Properties.Settings.Default.username != string.Empty)
             {
                 textBoxLogin.Text = Properties.Settings.Default.username;

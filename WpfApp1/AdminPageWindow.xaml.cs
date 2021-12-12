@@ -23,13 +23,9 @@ namespace WpfApp1
         {
             InitializeComponent();
 
-            // Экземпляр базы данных
             ApplicationContext db = new ApplicationContext();
-            
-            // Получаем всех пользователей в списке.
             List<User> users = db.Users.ToList();
 
-            // Выводим их на страницу
             listOfUsers.ItemsSource = users;
         }
 
@@ -54,7 +50,7 @@ namespace WpfApp1
         {
             AuthWindow auth = new AuthWindow();
             auth.Show();
-            this.Close();
+            Close();
         }
 
         /// <summary>
@@ -66,7 +62,7 @@ namespace WpfApp1
         {
             if (e.ChangedButton == MouseButton.Left)
             {
-                this.DragMove();
+                DragMove();
             }
         }
 

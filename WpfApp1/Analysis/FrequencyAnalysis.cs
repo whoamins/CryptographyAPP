@@ -17,39 +17,40 @@ namespace WpfApp1
         /// <returns></returns>
         public static string Analysis(string input, string output)
         {
-            // Создаем массив
+            if (string.IsNullOrEmpty(input))
+            {
+                throw new ArgumentException($"\"{nameof(input)}\" не может быть неопределенным или пустым.", nameof(input));
+            }
+
+            if (string.IsNullOrEmpty(output))
+            {
+                throw new ArgumentException($"\"{nameof(output)}\" не может быть неопределенным или пустым.", nameof(output));
+            }
+
             int[] c = new int[(int)char.MaxValue];
 
             StringBuilder sb = new StringBuilder();
 
-            // Переменной s присваиваем исходный текст
             string s = input;
-
             
-            // Проходимся по списку
             foreach (char t in s)
             {
                 c[(int)t]++;
             }
 
-            // Проходимся по английскому алфавиту и спец. символам 33 - A, 126 - z
             for (int i = 33; i <= 126; i++)
             {
-                // Добавляем к результату
                 sb.AppendLine(string.Format("Символ: {0}  Частота: {1}", (char)i, c[i]));
 
-                // Если прошлись по англ. алфавиту и спец.символам переходим на русский алфавит
                 if(i == 126)
                 {
                     for(int j = 1040; j <= 1103; j++)
                     {
-                        // Добавляем к результату
                         sb.AppendLine(string.Format("Символ: {0}  Частота: {1}", (char)j, c[j]));
                     }
                 }
             }
 
-            // Возвращаем результат.
             return sb.ToString();
         }
     }

@@ -20,17 +20,14 @@ namespace WpfApp1.DialogServices
         {
             try
             {
-                // Проверка, доступны ли данные в указанном формате, или возможность их преобразования в указанный формат.
                 if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 {
-                    // Получаем строки
                     string[] file = (string[])e.Data.GetData(DataFormats.FileDrop);
 
-                    // Выводим строки из файла в InputTextBox
                     InputTextBox.Text = File.ReadAllText(file[0]);
                 }
             }
-            catch (Exception) // Если получаем исключение, выдаем ошибку
+            catch (Exception)
             {
                 MessageBox.Show("Что-то пошло не так!", "Ошибка!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
